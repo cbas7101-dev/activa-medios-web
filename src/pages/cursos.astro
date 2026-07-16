@@ -1,16 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CursoLanding from '../components/CursoLanding.tsx';
 ---
 
 <Layout>
-  <section class="flex min-h-screen items-center justify-center bg-black px-4">
-    <div class="text-center">
-      <h1 class="font-heading text-4xl font-extrabold tracking-tight text-white md:text-6xl">
-        Cursos
-      </h1>
-      <p class="mt-4 font-sans text-lg text-gray-400">
-        En construcción
-      </p>
-    </div>
-  </section>
+  <CursoLanding client:load />
 </Layout>
