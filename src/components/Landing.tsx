@@ -1,9 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import {
-    Menu,
-    X,
     ArrowRight,
     ArrowUpRight,
     Sparkles,
@@ -11,19 +9,7 @@ import {
     GraduationCap,
     Plus,
     Play,
-    Phone,
-    Mail,
-    MapPin,
 } from "lucide-react"
-
-const NAV_LINKS = [
-    { label: "Inicio", href: "#inicio" },
-    { label: "Rotulación 3D", href: "#servicios" },
-    { label: "Insumos", href: "#servicios" },
-    { label: "Cursos", href: "#servicios" },
-    { label: "Galería", href: "#galeria" },
-    { label: "Nosotros", href: "#nosotros" },
-]
 
 const WORKS = [
     { src: "/work-1.png", alt: "Letras corpóreas rojas iluminadas en fachada de restaurante" },
@@ -35,92 +21,10 @@ const WORKS = [
 ]
 
 export default function Page() {
-    const [scrolled, setScrolled] = useState(false)
-    const [menuOpen, setMenuOpen] = useState(false)
     const [playing, setPlaying] = useState(false)
-
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 24)
-        onScroll()
-        window.addEventListener("scroll", onScroll, { passive: true })
-        return () => window.removeEventListener("scroll", onScroll)
-    }, [])
 
     return (
         <div className="min-h-screen bg-background">
-            {/* ==================== HEADER ==================== */}
-            <header
-                className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled
-                    ? "border-b border-border bg-background/80 backdrop-blur-md"
-                    : "border-b border-transparent bg-transparent"
-                    }`}
-            >
-                <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-8">
-                    <a href="#inicio" className="flex items-center gap-2" aria-label="Activa Medios inicio">
-                        <span className="font-heading text-xl font-extrabold uppercase tracking-tight text-foreground">
-                            Activa
-                        </span>
-                        <span className="font-heading text-xl font-extrabold uppercase tracking-tight text-primary">
-                            Medios
-                        </span>
-                    </a>
-
-                    <nav className="hidden items-center gap-8 lg:flex" aria-label="Principal">
-                        {NAV_LINKS.map((link) => (
-                            <a
-                                key={link.label}
-                                href={link.href}
-                                className="relative font-sans text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                            >
-                                {link.label}
-                            </a>
-                        ))}
-                    </nav>
-
-                    <div className="flex items-center gap-2">
-                        <a
-                            href="#cotizar"
-                            className="hidden rounded-full bg-primary px-5 py-2.5 font-sans text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-transform hover:scale-105 md:inline-flex"
-                        >
-                            Cotiza tu Rótulo 3D
-                        </a>
-                        <button
-                            type="button"
-                            onClick={() => setMenuOpen((v) => !v)}
-                            className="inline-flex size-10 items-center justify-center rounded-md text-foreground lg:hidden"
-                            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-                            aria-expanded={menuOpen}
-                        >
-                            {menuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
-                        </button>
-                    </div>
-                </div>
-
-                {menuOpen && (
-                    <div className="border-t border-border bg-background/95 backdrop-blur-md lg:hidden">
-                        <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Móvil">
-                            {NAV_LINKS.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    onClick={() => setMenuOpen(false)}
-                                    className="rounded-md px-3 py-3 font-sans text-base font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                                >
-                                    {link.label}
-                                </a>
-                            ))}
-                            <a
-                                href="#cotizar"
-                                onClick={() => setMenuOpen(false)}
-                                className="mt-2 rounded-full bg-primary px-5 py-3 text-center font-sans text-sm font-semibold text-primary-foreground"
-                            >
-                                Cotiza tu Rótulo 3D
-                            </a>
-                        </nav>
-                    </div>
-                )}
-            </header>
-
             <main>
                 {/* ==================== HERO ==================== */}
                 <section id="inicio" className="relative flex min-h-screen items-center overflow-hidden">
@@ -374,62 +278,6 @@ export default function Page() {
                 </div>
             </section>
 
-            {/* ==================== FOOTER ==================== */}
-            <footer id="nosotros" className="border-t border-border bg-background">
-                <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-16 md:grid-cols-4 md:px-8">
-                    <div className="md:col-span-2">
-                        <div className="flex items-center gap-2">
-                            <span className="font-heading text-2xl font-extrabold uppercase tracking-tight text-foreground">
-                                Activa
-                            </span>
-                            <span className="font-heading text-2xl font-extrabold uppercase tracking-tight text-primary">
-                                Medios
-                            </span>
-                        </div>
-                        <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-muted-foreground">
-                            Agencia de comunicación visual especializada en rotulación 3D, letras corpóreas y
-                            soluciones luminosas que transforman espacios y hacen crecer tu marca.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 className="font-heading text-sm font-bold uppercase tracking-wider text-foreground">
-                            Servicios
-                        </h3>
-                        <ul className="mt-4 space-y-3 font-sans text-sm text-muted-foreground">
-                            <li><a href="#servicios" className="transition-colors hover:text-accent">Rotulación 3D</a></li>
-                            <li><a href="#servicios" className="transition-colors hover:text-accent">Insumos</a></li>
-                            <li><a href="#servicios" className="transition-colors hover:text-accent">Cursos</a></li>
-                            <li><a href="#galeria" className="transition-colors hover:text-accent">Galería</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 className="font-heading text-sm font-bold uppercase tracking-wider text-foreground">
-                            Contacto
-                        </h3>
-                        <ul className="mt-4 space-y-3 font-sans text-sm text-muted-foreground">
-                            <li className="flex items-center gap-2">
-                                <Phone className="size-4 text-accent" /> +51 999 888 777
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <Mail className="size-4 text-accent" /> hola@activamedios.com
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <MapPin className="size-4 text-accent" /> Lima, Perú
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="border-t border-border">
-                    <div className="mx-auto max-w-7xl px-4 py-6 md:px-8">
-                        <p className="font-sans text-xs text-muted-foreground">
-                            © {new Date().getFullYear()} Activa Medios. Todos los derechos reservados.
-                        </p>
-                    </div>
-                </div>
-            </footer>
         </div>
     )
 }
