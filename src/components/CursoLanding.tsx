@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import {
   Calendar, Clock, MapPin, Check, X as XIcon, ChevronDown,
   GraduationCap, Briefcase, TrendingUp, Wrench, MessageCircle,
@@ -36,6 +37,25 @@ const INCLUYE = [
   "Servicio de cafetería y refrigerio sin costo.",
 ]
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.12, ease: "easeOut" },
+  }),
+}
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+}
+
+const cardItem = {
+  hidden: { opacity: 0, y: 24, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: "easeOut" } },
+}
+
 export default function CursoLanding() {
   const [acordeonAbierto, setAcordeonAbierto] = useState<number | null>(null)
 
@@ -43,58 +63,99 @@ export default function CursoLanding() {
     setAcordeonAbierto((prev) => (prev === idx ? null : idx))
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-16">
+    <div className="relative min-h-screen bg-black pt-24 pb-16">
+      <div className="absolute top-1/4 left-1/3 size-96 rounded-full bg-red-600/5 blur-[120px]" />
+      <div className="absolute bottom-1/3 right-1/4 size-80 rounded-full bg-red-600/5 blur-[100px]" />
+
       <div className="mx-auto max-w-7xl px-4 md:px-8">
 
-        {/* ─── HERO ─── */}
-        <section className="py-12 text-center md:py-20">
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-[#DC2626]/10 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-[#DC2626]">
+        <motion.section
+          className="py-12 text-center md:py-20"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <motion.div
+            variants={fadeUp}
+            custom={0}
+            className="mx-auto inline-flex items-center gap-2 rounded-full bg-[#DC2626]/10 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-[#DC2626]"
+          >
             <Sparkles className="size-3.5" />
             Curso Presencial
-          </div>
-          <h1 className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-white md:text-5xl md:leading-tight">
+          </motion.div>
+          <motion.h1
+            variants={fadeUp}
+            custom={1}
+            className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-white md:text-5xl md:leading-tight"
+          >
             CURSO PRESENCIAL DE{" "}
             <span className="text-[#DC2626]">RÓTULOS 3D</span> Y{" "}
             <span className="text-[#DC2626]">NEÓN FLEX</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl font-sans text-base leading-relaxed text-gray-400 md:text-lg">
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            custom={2}
+            className="mx-auto mt-5 max-w-2xl font-sans text-base leading-relaxed text-gray-400 md:text-lg"
+          >
             Aprende paso a paso desde 0, en este curso 100% práctico y
             personalizado. Incluye todos los materiales para las prácticas
             profesionales.
-          </p>
+          </motion.p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
-            <div className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-900 px-5 py-3">
+          <motion.div
+            variants={fadeUp}
+            custom={3}
+            className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap"
+          >
+            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
               <Calendar className="size-5 shrink-0 text-[#DC2626]" />
               <span className="font-sans text-sm text-gray-300">
                 <span className="font-semibold text-white">Inicio:</span> 15 de febrero 2025
               </span>
             </div>
-            <div className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-900 px-5 py-3">
+            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
               <Clock className="size-5 shrink-0 text-[#DC2626]" />
               <span className="font-sans text-sm text-gray-300">
                 <span className="font-semibold text-white">Duración:</span> 25 Horas
               </span>
             </div>
-            <div className="flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-900 px-5 py-3">
+            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
               <MapPin className="size-5 shrink-0 text-[#DC2626]" />
               <span className="font-sans text-sm text-gray-300">
                 <span className="font-semibold text-white">Ubicación:</span> Quito – Ecuador
               </span>
             </div>
-          </div>
-          <p className="mt-3 font-sans text-xs text-gray-500">
+          </motion.div>
+          <motion.p
+            variants={fadeUp}
+            custom={4}
+            className="mt-3 font-sans text-xs text-gray-500"
+          >
             De Las Toronjas S/N y De Los Melones, Sector El Inca
-          </p>
-        </section>
+          </motion.p>
+        </motion.section>
 
-        {/* ─── HORARIOS ─── */}
-        <section className="py-12 md:py-16">
+        <motion.section
+          className="py-12 md:py-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="mb-8 text-center font-heading text-2xl font-bold text-white md:text-3xl">
             Horarios Disponibles
           </h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 transition-colors hover:border-zinc-700 md:p-8">
+          <motion.div
+            className="grid grid-cols-1 gap-6 md:grid-cols-2"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div
+              variants={cardItem}
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10 md:p-8"
+            >
               <span className="rounded-full bg-[#DC2626]/10 px-3 py-1 font-sans text-xs font-semibold text-[#DC2626]">
                 Opción 1
               </span>
@@ -102,14 +163,17 @@ export default function CursoLanding() {
                 Matutino
               </h3>
               <p className="mt-1 font-sans text-sm text-gray-400">5 días</p>
-              <div className="mt-4 flex items-center gap-3 rounded-xl bg-zinc-800/50 px-4 py-3">
+              <div className="mt-4 flex items-center gap-3 rounded-xl bg-zinc-800/50 px-4 py-3 backdrop-blur-md">
                 <Clock className="size-5 shrink-0 text-[#DC2626]" />
                 <span className="font-sans text-sm text-gray-300">
                   Lunes a viernes de <strong className="text-white">8h00 a 13h00</strong>
                 </span>
               </div>
-            </div>
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 transition-colors hover:border-zinc-700 md:p-8">
+            </motion.div>
+            <motion.div
+              variants={cardItem}
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10 md:p-8"
+            >
               <span className="rounded-full bg-[#DC2626]/10 px-3 py-1 font-sans text-xs font-semibold text-[#DC2626]">
                 Opción 2
               </span>
@@ -117,23 +181,34 @@ export default function CursoLanding() {
                 Fines de Semana
               </h3>
               <p className="mt-1 font-sans text-sm text-gray-400">4 días</p>
-              <div className="mt-4 flex items-center gap-3 rounded-xl bg-zinc-800/50 px-4 py-3">
+              <div className="mt-4 flex items-center gap-3 rounded-xl bg-zinc-800/50 px-4 py-3 backdrop-blur-md">
                 <Clock className="size-5 shrink-0 text-[#DC2626]" />
                 <span className="font-sans text-sm text-gray-300">
                   Sábado y domingo de <strong className="text-white">8h45 a 16h00</strong>
                 </span>
               </div>
-            </div>
-          </div>
-        </section>
+            </motion.div>
+          </motion.div>
+        </motion.section>
 
-        {/* ─── QUÉ INCLUYE ─── */}
-        <section className="py-12 md:py-16">
+        <motion.section
+          className="py-12 md:py-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="mx-auto max-w-3xl">
             <h2 className="mb-8 text-center font-heading text-2xl font-bold text-white md:text-3xl">
               ¿Qué incluye?
             </h2>
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 md:p-8">
+            <motion.div
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md md:p-8"
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {INCLUYE.map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -142,20 +217,34 @@ export default function CursoLanding() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
-        {/* ─── INVERSIÓN ─── */}
-        <section className="py-12 md:py-16">
+        <motion.section
+          className="py-12 md:py-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="mb-8 text-center font-heading text-2xl font-bold text-white md:text-3xl">
             Inversión
           </h2>
           <p className="mb-8 text-center font-sans text-sm text-gray-400">
             Formas de pago flexibles para ti
           </p>
-          <div className="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="relative rounded-2xl border-2 border-[#DC2626] bg-zinc-900 p-6 shadow-lg shadow-[#DC2626]/10 md:p-8">
+          <motion.div
+            className="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div
+              variants={cardItem}
+              className="relative rounded-2xl border-2 border-[#DC2626] bg-zinc-900/50 p-6 shadow-lg shadow-[#DC2626]/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#DC2626]/20 md:p-8"
+            >
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#DC2626] px-4 py-1 font-sans text-xs font-bold uppercase tracking-wider text-white">
                 Recomendado
               </span>
@@ -175,19 +264,24 @@ export default function CursoLanding() {
                     Pago en efectivo, depósito o transferencia
                   </p>
                 </div>
-                <a
+                <motion.a
                   href="https://wa.me/593999099175?text=Hola%2C%20quiero%20reservar%20mi%20cupo%20para%20el%20Curso%20Presencial%20de%20R%C3%B3tulos%203D"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3.5 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-transform hover:scale-[1.02] active:scale-95"
+                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3.5 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   <MessageCircle className="size-4" />
                   ¡RESERVA UN CUPO!
-                </a>
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 transition-colors hover:border-zinc-700 md:p-8">
+            <motion.div
+              variants={cardItem}
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10 md:p-8"
+            >
               <div className="text-center">
                 <p className="font-sans text-sm font-semibold text-gray-400">2 Pagos</p>
                 <p className="mt-2 font-heading text-4xl font-extrabold text-white">
@@ -201,27 +295,43 @@ export default function CursoLanding() {
                     <strong className="text-white">$150 USD</strong> el día inicial
                   </p>
                 </div>
-                <a
+                <motion.a
                   href="https://wa.me/593999099175?text=Hola%2C%20quiero%20reservar%20mi%20cupo%20para%20el%20Curso%20Presencial%20de%20R%C3%B3tulos%203D"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3.5 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-transform hover:scale-[1.02] active:scale-95"
+                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3.5 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   <MessageCircle className="size-4" />
                   ¡RESERVA UN CUPO!
-                </a>
+                </motion.a>
               </div>
-            </div>
-          </div>
-        </section>
+            </motion.div>
+          </motion.div>
+        </motion.section>
 
-        {/* ─── QUÉ PODRÁS HACER ─── */}
-        <section className="py-12 md:py-16">
+        <motion.section
+          className="py-12 md:py-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="mb-8 text-center font-heading text-2xl font-bold text-white md:text-3xl">
             ¿Qué podrás hacer después del curso?
           </h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 transition-colors hover:border-zinc-700">
+          <motion.div
+            className="grid grid-cols-1 gap-6 md:grid-cols-3"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div
+              variants={cardItem}
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
+            >
               <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-[#DC2626]/10">
                 <Briefcase className="size-6 text-[#DC2626]" />
               </div>
@@ -229,8 +339,11 @@ export default function CursoLanding() {
               <p className="mt-2 font-sans text-sm leading-relaxed text-gray-400">
                 Crear tu propio negocio o repotenciar el existente.
               </p>
-            </div>
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 transition-colors hover:border-zinc-700">
+            </motion.div>
+            <motion.div
+              variants={cardItem}
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
+            >
               <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-[#DC2626]/10">
                 <TrendingUp className="size-6 text-[#DC2626]" />
               </div>
@@ -238,8 +351,11 @@ export default function CursoLanding() {
               <p className="mt-2 font-sans text-sm leading-relaxed text-gray-400">
                 Desarrollar, fabricar e instalar rótulos 3D.
               </p>
-            </div>
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 transition-colors hover:border-zinc-700">
+            </motion.div>
+            <motion.div
+              variants={cardItem}
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
+            >
               <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-[#DC2626]/10">
                 <Wrench className="size-6 text-[#DC2626]" />
               </div>
@@ -247,12 +363,17 @@ export default function CursoLanding() {
               <p className="mt-2 font-sans text-sm leading-relaxed text-gray-400">
                 Manejar herramientas de corte, suelda y doblado.
               </p>
-            </div>
-          </div>
-        </section>
+            </motion.div>
+          </motion.div>
+        </motion.section>
 
-        {/* ─── TEMARIO ─── */}
-        <section className="py-12 md:py-16">
+        <motion.section
+          className="py-12 md:py-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="mb-8 text-center font-heading text-2xl font-bold text-white md:text-3xl">
             Temario
           </h2>
@@ -260,9 +381,13 @@ export default function CursoLanding() {
             {TEMARIO.map((modulo, idx) => {
               const abierto = acordeonAbierto === idx
               return (
-                <div
+                <motion.div
                   key={idx}
-                  className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/50 transition-colors hover:border-zinc-700"
+                  className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-300 hover:border-zinc-700"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.08 }}
                 >
                   <button
                     type="button"
@@ -281,26 +406,35 @@ export default function CursoLanding() {
                       }`}
                     />
                   </button>
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      abierto ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                    }`}
+                  <motion.div
+                    className="overflow-hidden"
+                    initial={false}
+                    animate={{
+                      height: abierto ? "auto" : 0,
+                      opacity: abierto ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                     <div className="border-t border-zinc-800 px-6 py-4">
                       <p className="font-sans text-sm leading-relaxed text-gray-400">
                         {modulo.contenido}
                       </p>
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               )
             })}
           </div>
-        </section>
+        </motion.section>
 
-        {/* ─── CTA FINAL ─── */}
-        <section className="py-12 md:py-16">
-          <div className="mx-auto max-w-2xl rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 text-center md:p-12">
+        <motion.section
+          className="py-12 md:py-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="mx-auto max-w-2xl rounded-2xl border border-white/10 bg-gradient-to-br from-zinc-900/80 to-zinc-950/80 p-8 text-center backdrop-blur-xl shadow-2xl shadow-red-900/5 md:p-12">
             <GraduationCap className="mx-auto size-10 text-[#DC2626]" />
             <h2 className="mt-4 font-heading text-2xl font-bold text-white">
               ¿Listo para empezar?
@@ -309,17 +443,19 @@ export default function CursoLanding() {
               Cupos limitados. Reserva el tuyo hoy y da el siguiente paso en tu
               carrera profesional.
             </p>
-            <a
+            <motion.a
               href="https://wa.me/593999099175?text=Hola%2C%20quiero%20reservar%20mi%20cupo%20para%20el%20Curso%20Presencial%20de%20R%C3%B3tulos%203D"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-transform hover:scale-[1.02] active:scale-95"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
             >
               <MessageCircle className="size-5" />
               ¡RESERVA UN CUPO!
-            </a>
+            </motion.a>
           </div>
-        </section>
+        </motion.section>
 
       </div>
     </div>

@@ -8,6 +8,7 @@ const NAV_LINKS = [
     { label: "Rotulación 3D", href: "/rotulacion-3d" },
     { label: "Insumos", href: "/insumos" },
     { label: "Cursos", href: "/cursos" },
+    { label: "Otros servicios", href: "/otros-servicios" },
     { label: "Galería", href: "/galeria" },
     { label: "Nosotros", href: "/nosotros" },
 ]
