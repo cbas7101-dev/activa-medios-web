@@ -3,39 +3,64 @@
 import { useState, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
-  ShoppingCart, Plus, Minus, Trash2, X, MessageCircle, Package,
-  ChevronRight
+  ShoppingCart, Plus, Minus, Trash2, X, MessageCircle, Package
 } from "lucide-react"
+
+type VoltajeOption = {
+  voltaje: string
+  precio: number
+}
 
 type Producto = {
   id: number
   nombre: string
   precio: number
   imagen: string
+  categoria: string
+  especificaciones: string[]
   colores?: string[]
   tamanos?: string[]
+  voltajes?: VoltajeOption[]
 }
 
 const PRODUCTOS: Producto[] = [
   {
-    id: 1, nombre: "Perfil de Aluminio para Letras 3D", precio: 85.00, imagen: "📦",
+    id: 1, nombre: "Perfil de Aluminio para Letras 3D", precio: 85.00, imagen: "perfil-de-aluminio.jpeg",
+    categoria: "PERFILES", especificaciones: ["Rollos 6cm × 50m", "Rollos 8cm × 50m", "7 colores"],
     colores: ["Rojo", "Blanco", "Amarillo", "Plateado", "Verde", "Negro", "Azul"],
     tamanos: ["6cm - 50m", "8cm - 50m"],
   },
   {
-    id: 2, nombre: "LEDs 12V / 110V Luz Blanca y Cálida", precio: 0.35, imagen: "💡",
+    id: 2, nombre: "LEDs 12V / 110V Luz Blanca y Cálida", precio: 0.35, imagen: "leds.jpeg",
+    categoria: "ILUMINACIÓN", especificaciones: ["12V", "110V", "5 colores"],
+    colores: ["Blanco", "Cálido", "Rojo", "Azul", "Verde"],
+    voltajes: [
+      { voltaje: "12V", precio: 0.35 },
+      { voltaje: "110V", precio: 0.42 },
+    ],
+  },
+  {
+    id: 3, nombre: "Mini LEDs 110V Luz Blanca y Cálida", precio: 0.40, imagen: "mini-leds.jpeg",
+    categoria: "ILUMINACIÓN", especificaciones: ["110V", "5 colores"],
     colores: ["Blanco", "Cálido", "Rojo", "Azul", "Verde"],
   },
   {
-    id: 3, nombre: "Mini LEDs 110V Luz Blanca y Cálida", precio: 0.40, imagen: "💡",
-    colores: ["Blanco", "Cálido", "Rojo", "Azul", "Verde"],
-  },
-  {
-    id: 4, nombre: "Silvatream 3/4\"", precio: 25.00, imagen: "📏",
+    id: 4, nombre: "Silvatream 3/4\"", precio: 25.00, imagen: "silvatream.jpeg",
+    categoria: "SILVATREAM", especificaciones: ["3/4\"", "3 colores"],
     colores: ["Negro", "Blanco", "Plata"],
   },
-  { id: 5, nombre: "Pega Acrílica de Secado Rápido", precio: 33.00, imagen: "🧴" },
-  { id: 6, nombre: "Polvo Acrílico 500g", precio: 15.00, imagen: "🧪" },
+  {
+    id: 5, nombre: "Polvo Acrílico 500g", precio: 15.00, imagen: "polvo-acrilico.jpeg",
+    categoria: "ACRÍLICOS", especificaciones: ["Bolsa 500g"],
+  },
+  {
+    id: 6, nombre: "Dobladora de Acrílico", precio: 120.00, imagen: "dobladora.jpeg",
+    categoria: "HERRAMIENTAS", especificaciones: ["Hasta 4mm espesor"],
+  },
+  {
+    id: 7, nombre: "Temporizador", precio: 18.00, imagen: "temporizador.jpeg",
+    categoria: "ELÉCTRICO", especificaciones: ["Digital"],
+  },
 ]
 
 type CartItem = {
@@ -47,12 +72,12 @@ type CartItem = {
   cantidad: number
 }
 
-function buildCartKey(id: number, color: string, size: string) {
-  return `${id}|${color || ""}|${size || ""}`
+function buildCartKey(id: number, color: string, size: string, voltaje: string) {
+  return `${id}|${color || ""}|${size || ""}|${voltaje || ""}`
 }
 
-function buildVarianteLabel(color: string, size: string) {
-  const parts = [color, size].filter(Boolean)
+function buildVarianteLabel(color: string, size: string, voltaje: string) {
+  const parts = [color, size, voltaje].filter(Boolean)
   return parts.length ? parts.join(", ") : ""
 }
 
@@ -85,12 +110,23 @@ export default function TiendaInsumos() {
   const [modalProduct, setModalProduct] = useState<Producto | null>(null)
   const [selectedColor, setSelectedColor] = useState("")
   const [selectedSize, setSelectedSize] = useState("")
+  const [selectedVoltaje, setSelectedVoltaje] = useState("")
   const [modalCantidad, setModalCantidad] = useState(1)
+
+  const unitPrice = useMemo(() => {
+    if (!modalProduct) return 0
+    if (modalProduct.voltajes && selectedVoltaje) {
+      const opt = modalProduct.voltajes.find((v) => v.voltaje === selectedVoltaje)
+      if (opt) return opt.precio
+    }
+    return modalProduct.precio
+  }, [modalProduct, selectedVoltaje])
 
   const openModal = (producto: Producto) => {
     setModalProduct(producto)
     setSelectedColor(producto.colores?.[0] ?? "")
     setSelectedSize(producto.tamanos?.[0] ?? "")
+    setSelectedVoltaje(producto.voltajes?.[0]?.voltaje ?? "")
     setModalCantidad(1)
   }
 
@@ -98,8 +134,8 @@ export default function TiendaInsumos() {
 
   const addToCart = () => {
     if (!modalProduct) return
-    const cartKey = buildCartKey(modalProduct.id, selectedColor, selectedSize)
-    const variante = buildVarianteLabel(selectedColor, selectedSize)
+    const cartKey = buildCartKey(modalProduct.id, selectedColor, selectedSize, selectedVoltaje)
+    const variante = buildVarianteLabel(selectedColor, selectedSize, selectedVoltaje)
     setCart((prev) => {
       const existing = prev.find((item) => item.cartKey === cartKey)
       if (existing) {
@@ -116,7 +152,7 @@ export default function TiendaInsumos() {
           id: modalProduct.id,
           nombre: modalProduct.nombre,
           variante,
-          precio: modalProduct.precio,
+          precio: unitPrice,
           cantidad: modalCantidad,
         },
       ]
@@ -221,36 +257,43 @@ export default function TiendaInsumos() {
             <motion.div
               key={producto.id}
               variants={cardItem}
-              className="group flex cursor-pointer flex-col rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md p-6 transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:bg-zinc-900/60 hover:shadow-xl hover:shadow-red-900/10"
+              className="group flex cursor-pointer flex-col rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:bg-zinc-900/60 hover:shadow-xl hover:shadow-red-900/10"
               onClick={() => openModal(producto)}
             >
-              <div className="mb-4 flex size-14 items-center justify-center rounded-xl bg-zinc-800/50 text-2xl backdrop-blur-md">
-                {producto.imagen}
-              </div>
-              <h3 className="font-sans text-base font-bold text-white">
+              <img
+                src={`/insumos/${producto.imagen}`}
+                alt={producto.nombre}
+                className="w-full aspect-square object-cover rounded-t-xl"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="p-6 pt-4">
+              <span className="text-[10px] text-zinc-500 uppercase tracking-widest mb-1 block">
+                {producto.categoria}
+              </span>
+              <h3 className="text-white text-base font-medium mb-3 leading-tight">
                 {producto.nombre}
               </h3>
-              <p className="mt-2 font-sans text-2xl font-extrabold text-[#DC2626]">
-                ${producto.precio.toFixed(2)}
-              </p>
-              <p className="mt-1 font-sans text-xs text-gray-500">
-                Precio por unidad + IVA
-              </p>
-              <div className="mt-auto flex items-center justify-between pt-4">
-                {(producto.colores || producto.tamanos) && (
-                  <span className="font-sans text-xs text-gray-500">
-                    {[producto.colores?.length && `${producto.colores.length} colores`, producto.tamanos?.length && `${producto.tamanos.length} tamaños`]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </span>
-                )}
+              {producto.especificaciones.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {producto.especificaciones.map((spec, i) => (
+                    <span key={i} className="bg-zinc-800/80 text-zinc-400 text-[11px] px-2 py-1 rounded">
+                      {spec}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <div className="flex justify-between items-center mt-auto pt-2">
+                <span className="text-white text-lg font-bold">
+                  ${producto.precio.toFixed(2)}
+                </span>
                 <span
-                  className="ml-auto inline-flex items-center gap-1 rounded-full bg-[#DC2626] px-4 py-2 font-sans text-xs font-semibold text-white shadow-lg shadow-[#DC2626]/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/30 active:scale-95"
+                  className="text-red-700 hover:text-red-600 text-xs font-bold uppercase transition-colors cursor-pointer"
                   onClick={(e) => { e.stopPropagation(); openModal(producto) }}
                 >
-                  Ver opciones
-                  <ChevronRight className="size-3" />
+                  VER PRODUCTO
                 </span>
+              </div>
               </div>
             </motion.div>
           ))}
@@ -284,14 +327,18 @@ export default function TiendaInsumos() {
                 <X className="size-5" />
               </button>
 
-              <div className="mb-2 flex size-14 items-center justify-center rounded-xl bg-zinc-800/50 text-2xl backdrop-blur-md">
-                {modalProduct.imagen}
-              </div>
+              <img
+                src={`/insumos/${modalProduct.imagen}`}
+                alt={modalProduct.nombre}
+                className="w-full h-48 object-contain rounded-xl mb-4 bg-black p-2"
+                loading="lazy"
+                decoding="async"
+              />
               <h2 className="mt-4 font-heading text-2xl font-bold text-white">
                 {modalProduct.nombre}
               </h2>
               <p className="mt-1 font-sans text-3xl font-extrabold text-[#DC2626]">
-                ${modalProduct.precio.toFixed(2)}
+                ${unitPrice.toFixed(2)}
               </p>
               <p className="mt-1 font-sans text-xs text-gray-500">
                 Precio por unidad + IVA
@@ -320,6 +367,30 @@ export default function TiendaInsumos() {
                             style={{ backgroundColor: COLOR_MAP[color] ?? "#666" }}
                           />
                           {color}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {modalProduct.voltajes && (
+                  <div>
+                    <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
+                      Voltaje: <span className="text-white">{selectedVoltaje}</span>
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {modalProduct.voltajes.map((opt) => (
+                        <button
+                          key={opt.voltaje}
+                          type="button"
+                          onClick={() => setSelectedVoltaje(opt.voltaje)}
+                          className={`rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
+                            selectedVoltaje === opt.voltaje
+                              ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
+                              : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
+                          }`}
+                        >
+                          {opt.voltaje} — ${opt.precio.toFixed(2)}/u
                         </button>
                       ))}
                     </div>
@@ -383,7 +454,7 @@ export default function TiendaInsumos() {
                     <span className="ml-auto font-sans text-sm text-gray-400">
                       Subtotal:{" "}
                       <span className="font-bold text-white">
-                        ${(modalProduct.precio * modalCantidad).toFixed(2)}
+                        ${(unitPrice * modalCantidad).toFixed(2)}
                       </span>
                     </span>
                   </div>
