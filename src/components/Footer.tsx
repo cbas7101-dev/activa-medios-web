@@ -5,14 +5,14 @@ export default function Footer() {
         <footer className="border-t border-border bg-background">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-16 md:grid-cols-4 md:px-8">
                 <div className="md:col-span-2">
-                    <div className="flex items-center gap-2">
+                    <a href="/" className="inline-flex items-center gap-2" aria-label="Activa Medios inicio">
                         <span className="font-heading text-2xl font-extrabold uppercase tracking-tight text-foreground">
                             Activa
                         </span>
                         <span className="font-heading text-2xl font-extrabold uppercase tracking-tight text-primary">
                             Medios
                         </span>
-                    </div>
+                    </a>
                     <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-muted-foreground">
                         Agencia de comunicación visual especializada en rotulación 3D, letras corpóreas y
                         soluciones luminosas que transforman espacios y hacen crecer tu marca.
@@ -37,10 +37,12 @@ export default function Footer() {
                     </h3>
                     <ul className="mt-4 space-y-3 font-sans text-sm text-muted-foreground">
                         <li className="flex items-center gap-2">
-                            <Phone className="size-4 text-accent" /> +51 999 888 777
+                            <Phone className="size-4 text-accent" />
+                            <a href="tel:+51999888777" className="transition-colors hover:text-accent">+51 999 888 777</a>
                         </li>
                         <li className="flex items-center gap-2">
-                            <Mail className="size-4 text-accent" /> hola@activamedios.com
+                            <Mail className="size-4 text-accent" />
+                            <a href="mailto:hola@activamedios.com" className="transition-colors hover:text-accent">hola@activamedios.com</a>
                         </li>
                         <li className="flex items-center gap-2">
                             <MapPin className="size-4 text-accent" /> Lima, Perú

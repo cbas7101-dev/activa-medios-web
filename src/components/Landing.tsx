@@ -108,7 +108,7 @@ export default function Page() {
                                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                                 </a>
                                 <a
-                                    href="#galeria"
+                                    href="/galeria"
                                     className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/40 px-7 py-3.5 font-sans text-base font-semibold text-foreground transition-all duration-300 hover:bg-foreground/10 hover:border-foreground/60"
                                 >
                                     Ver trabajos

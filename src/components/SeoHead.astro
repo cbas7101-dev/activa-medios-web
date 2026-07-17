@@ -1,0 +1,43 @@
+---
+
+export interface Props {
+  title?: string
+  description?: string
+  image?: string
+  imageAlt?: string
+  ogType?: string
+  twitterCard?: string
+}
+
+const {
+  title = "Activa Medios | Rótulos 3D y Comunicación Visual",
+  description = "Expertos en rotulación 3D, señalética, gigantografías y diseño web. Más de 14 años creando comunicación visual en Quito, Ecuador.",
+  image = "/og-activa-medios.jpg",
+  imageAlt = "Activa Medios — Rótulos 3D y Comunicación Visual",
+  ogType = "website",
+  twitterCard = "summary_large_image",
+} = Astro.props as Props;
+
+const url = Astro.url;
+const canonical = `${url.origin}${url.pathname}`;
+
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={`${url.origin}${image}`} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content="es_EC" />
+<meta property="og:site_name" content="Activa Medios" />
+
+<meta name="twitter:card" content={twitterCard} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={`${url.origin}${image}`} />
+<meta name="twitter:image:alt" content={imageAlt} />
