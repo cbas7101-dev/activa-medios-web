@@ -14,21 +14,21 @@ type Proyecto = {
 const CATEGORIAS = ["Todos", "Rotulación 3D", "Cursos", "Señaléticas", "Acrílicos"]
 
 const PROYECTOS: Proyecto[] = [
-  { id: 1, titulo: "Letras Corpóreas Doradas", categoria: "Rotulación 3D", imagen: "/work-1.png" },
-  { id: 2, titulo: "Taller de Letras 3D Nivel 1", categoria: "Cursos", imagen: "/work-2.png" },
-  { id: 3, titulo: "Señalética Corporativa Oficinas", categoria: "Señaléticas", imagen: "/work-3.png" },
-  { id: 4, titulo: "Panel Acrílico Iluminado", categoria: "Acrílicos", imagen: "/work-4.png" },
-  { id: 5, titulo: "Rótulo 3D Fachada Comercial", categoria: "Rotulación 3D", imagen: "/work-5.png" },
-  { id: 6, titulo: "Taller Avanzado Rotulación", categoria: "Cursos", imagen: "/work-6.png" },
-  { id: 7, titulo: "Señalética Zona de Seguridad", categoria: "Señaléticas", imagen: "/work-1.png" },
-  { id: 8, titulo: "Acrílico Luminoso Recepción", categoria: "Acrílicos", imagen: "/work-2.png" },
-  { id: 9, titulo: "Letras 3D Iluminadas LED", categoria: "Rotulación 3D", imagen: "/work-3.png" },
-  { id: 10, titulo: "Taller Práctico Señaléticas", categoria: "Cursos", imagen: "/work-4.png" },
-  { id: 11, titulo: "Señalética Exterior Metálica", categoria: "Señaléticas", imagen: "/work-5.png" },
-  { id: 12, titulo: "Estructuras Acrílicas Publicitarias", categoria: "Acrílicos", imagen: "/work-6.png" },
-  { id: 13, titulo: "Rótulo Corporativo 3D", categoria: "Rotulación 3D", imagen: "/work-1.png" },
-  { id: 14, titulo: "Capacitación en Rotulación", categoria: "Cursos", imagen: "/work-2.png" },
-  { id: 15, titulo: "Letrero Acrílico Exterior", categoria: "Acrílicos", imagen: "/work-3.png" },
+  { id: 1, titulo: "Letras Corpóreas Doradas", categoria: "Rotulación 3D", imagen: "/Galeria/Tpazio-2.jpg" },
+  { id: 2, titulo: "Taller de Letras 3D Nivel 1", categoria: "Cursos", imagen: "/Galeria/Cursos-foto-interna-ai.png" },
+  { id: 3, titulo: "Señalética Corporativa Oficinas", categoria: "Señaléticas", imagen: "/Galeria/Senae-3.jpg" },
+  { id: 4, titulo: "Panel Acrílico Iluminado", categoria: "Acrílicos", imagen: "/Galeria/Misska-scaled.jpg" },
+  { id: 5, titulo: "Rótulo 3D Fachada Comercial", categoria: "Rotulación 3D", imagen: "/Galeria/Barranco.jpg" },
+  { id: 6, titulo: "Taller Avanzado Rotulación", categoria: "Cursos", imagen: "/Galeria/Bookafe-scaled.jpg" },
+  { id: 7, titulo: "Señalética Zona de Seguridad", categoria: "Señaléticas", imagen: "/Galeria/Seguro-Sucre-3.jpg" },
+  { id: 8, titulo: "Acrílico Luminoso Recepción", categoria: "Acrílicos", imagen: "/Galeria/Uniquedeco-scaled.jpg" },
+  { id: 9, titulo: "Letras 3D Iluminadas LED", categoria: "Rotulación 3D", imagen: "/Galeria/Chicberry-scaled.jpg" },
+  { id: 10, titulo: "Taller Práctico Señaléticas", categoria: "Cursos", imagen: "/Galeria/Brasa-Viva-scaled.jpg" },
+  { id: 11, titulo: "Señalética Exterior Metálica", categoria: "Señaléticas", imagen: "/Galeria/Valla-1-1.jpg" },
+  { id: 12, titulo: "Estructuras Acrílicas Publicitarias", categoria: "Acrílicos", imagen: "/Galeria/Bucodent.jpg" },
+  { id: 13, titulo: "Rótulo Corporativo 3D", categoria: "Rotulación 3D", imagen: "/Galeria/Exec-1-scaled.jpg" },
+  { id: 14, titulo: "Capacitación en Rotulación", categoria: "Cursos", imagen: "/Galeria/Good-Year-scaled.jpg" },
+  { id: 15, titulo: "Letrero Acrílico Exterior", categoria: "Acrílicos", imagen: "/Galeria/Farmacias-Jin-Lenin-8.jpg" },
 ]
 
 const staggerContainer = {
@@ -122,11 +122,13 @@ export default function GaleriaProyectos() {
               variants={cardItem}
               className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
             >
-              <div className="flex size-full items-center justify-center bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 text-gray-600">
-                <span className="text-2xl font-bold tracking-widest">
-                  {proyecto.categoria.slice(0, 3).toUpperCase()}
-                </span>
-              </div>
+              <img
+                src={proyecto.imagen}
+                alt={proyecto.titulo}
+                className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                onError={(e) => { e.currentTarget.style.display = "none" }}
+              />
 
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/0 p-4 transition-all duration-300 group-hover:bg-black/70">
                 <span className="translate-y-4 font-sans text-base font-bold text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
@@ -178,10 +180,12 @@ export default function GaleriaProyectos() {
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex aspect-[4/3] w-full max-w-4xl items-center justify-center rounded-2xl border border-zinc-700/50 bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-md">
-                <span className="text-4xl font-bold tracking-widest text-gray-600">
-                  {filtradas[lightboxIdx].categoria.slice(0, 3).toUpperCase()}
-                </span>
+              <div className="flex aspect-[4/3] w-full max-w-4xl items-center justify-center overflow-hidden rounded-2xl border border-zinc-700/50 bg-zinc-900/50 backdrop-blur-md">
+                <img
+                  src={filtradas[lightboxIdx].imagen}
+                  alt={filtradas[lightboxIdx].titulo}
+                  className="size-full object-cover"
+                />
               </div>
               <p className="mt-4 font-sans text-lg font-bold text-white">
                 {filtradas[lightboxIdx].titulo}

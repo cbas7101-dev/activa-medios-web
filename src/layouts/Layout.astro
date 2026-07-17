@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.tsx';
+import WhatsAppButton from '../components/WhatsAppButton.tsx';
 import Footer from '../components/Footer.tsx';
 import SeoHead from '../components/SeoHead.astro';
 
@@ -23,6 +24,7 @@ const { title, description, image, imageAlt } = Astro.props as Props;
   <body class="bg-black text-white m-0 p-0">
     <Header client:load />
     <slot />
+    <WhatsAppButton client:load />
     <Footer client:load />
   </body>
 </html>

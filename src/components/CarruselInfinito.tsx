@@ -1,11 +1,11 @@
 "use client"
 
 const IMAGES = [
-  "/marquee-1.jpg",
-  "/marquee-2.jpg",
-  "/marquee-3.jpg",
-  "/marquee-4.jpg",
-  "/marquee-5.jpg",
+  "/fotos/Barranco.jpg",
+  "/fotos/Chicberry-scaled.jpg",
+  "/fotos/Julian-gaitan-5-scaled.jpg",
+  "/fotos/Remax.jpg",
+  "/fotos/Misska-scaled.jpg",
 ]
 
 export default function CarruselInfinito() {
@@ -33,7 +33,7 @@ export default function CarruselInfinito() {
               <img
                 src={src}
                 alt={`Trabajo ${(i % IMAGES.length) + 1}`}
-                className="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                 loading="lazy"
                 onError={(e) => {
                   const t = e.currentTarget

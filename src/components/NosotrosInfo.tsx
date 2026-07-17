@@ -22,11 +22,11 @@ const bentoItem = {
 }
 
 const TALLER_FOTOS = [
-  { src: "/taller-1.jpg", alt: "Taller de fabricación de letras corpóreas" },
-  { src: "/taller-2.jpg", alt: "Máquinas y herramientas de rotulación" },
-  { src: "/taller-3.jpg", alt: "Proceso de corte y ensamblaje" },
-  { src: "/taller-4.jpg", alt: "Equipo de trabajo en taller" },
-  { src: "/taller-5.jpg", alt: "Instalación de rótulo 3D en fachada" },
+  { src: "/Fotos_y_Videos/Tpazio-2.jpg", alt: "Vista del taller de Activa Medios" },
+  { src: "/Fotos_y_Videos/impresora-origen-1.jpg", alt: "Impresora de gran formato en el taller" },
+  { src: "/Fotos_y_Videos/moladora.jpg", alt: "Herramientas de corte y fabricación" },
+  { src: "/Fotos_y_Videos/Gigantografias-foto-interna-ai.png", alt: "Gigantografía instalada en fachada" },
+  { src: "/Fotos_y_Videos/Tpazio-2.jpg", alt: "Proyecto de rotulación 3D en taller" },
 ]
 
 export default function NosotrosInfo() {
@@ -95,7 +95,7 @@ export default function NosotrosInfo() {
           >
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-[#DC2626]/20 to-transparent blur-2xl" />
             <img
-              src="/nosotros-main.jpg"
+              src="/Fotos_y_Videos/Nuestra-Historia-scaled.jpg"
               alt="Taller de Activa Medios en Quito"
               className="relative rounded-2xl border border-white/10 object-cover shadow-2xl"
             />

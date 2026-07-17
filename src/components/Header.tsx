@@ -32,13 +32,8 @@ export default function Header() {
                 }`}
         >
             <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-8">
-                <a href="/" className="flex items-center gap-2" aria-label="Activa Medios inicio">
-                    <span className="font-heading text-xl font-extrabold uppercase tracking-tight text-foreground">
-                        Activa
-                    </span>
-                    <span className="font-heading text-xl font-extrabold uppercase tracking-tight text-primary">
-                        Medios
-                    </span>
+                <a href="/" className="flex shrink-0 items-center gap-2" aria-label="Activa Medios inicio">
+                    <img src="/logotpo-activa.png" alt="Activa Medios" className="h-8 w-auto" />
                 </a>
 
                 <nav className="hidden items-center gap-8 lg:flex" aria-label="Principal">
@@ -54,6 +49,44 @@ export default function Header() {
                 </nav>
 
                 <div className="flex items-center gap-2">
+                    <div className="hidden items-center gap-1 md:flex">
+                        <a
+                            href="https://www.instagram.com/activa.medios/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex size-9 items-center justify-center rounded-full text-muted-foreground transition-all duration-300 hover:bg-red-600/20 hover:text-foreground"
+                            aria-label="Instagram"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.tiktok.com/@mauro.activamedios"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex size-9 items-center justify-center rounded-full text-muted-foreground transition-all duration-300 hover:bg-red-600/20 hover:text-foreground"
+                            aria-label="TikTok"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+                                <path d="M9 22V4l12-2v18" />
+                                <path d="M9 16.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" />
+                            </svg>
+                        </a>
+                        <a
+                            href="https://www.facebook.com/ActivaPubIicidad/?locale=es_LA"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex size-9 items-center justify-center rounded-full text-muted-foreground transition-all duration-300 hover:bg-red-600/20 hover:text-foreground"
+                            aria-label="Facebook"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2z" />
+                            </svg>
+                        </a>
+                    </div>
                     <a
                         href="/#cotizar"
                         className="hidden rounded-full bg-primary px-5 py-2.5 font-sans text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-transform hover:scale-105 md:inline-flex"
