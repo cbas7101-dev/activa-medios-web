@@ -260,7 +260,7 @@ export default function Page() {
                         compromiso.
                     </p>
                     <a
-                        href="#inicio"
+                        href="/rotulacion-3d"
                         className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-sans text-base font-semibold text-primary-foreground shadow-xl shadow-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/40"
                     >
                         Cotiza tu Rótulo 3D

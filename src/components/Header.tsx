@@ -33,7 +33,7 @@ export default function Header() {
         >
             <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-8">
                 <a href="/" className="flex shrink-0 items-center gap-2" aria-label="Activa Medios inicio">
-                    <img src="/logotpo-activa.png" alt="Activa Medios" className="h-8 w-auto" />
+                    <img src="/logotpo-activa.png" alt="Activa Medios" className="h-8 w-auto brightness-0 invert" />
                 </a>
 
                 <nav className="hidden items-center gap-8 lg:flex" aria-label="Principal">
@@ -88,7 +88,7 @@ export default function Header() {
                         </a>
                     </div>
                     <a
-                        href="/#cotizar"
+                        href="/rotulacion-3d"
                         className="hidden rounded-full bg-primary px-5 py-2.5 font-sans text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-transform hover:scale-105 md:inline-flex"
                     >
                         Cotiza tu Rótulo 3D
@@ -119,7 +119,7 @@ export default function Header() {
                             </a>
                         ))}
                         <a
-                            href="/#cotizar"
+                            href="/rotulacion-3d"
                             onClick={() => setMenuOpen(false)}
                             className="mt-2 rounded-full bg-primary px-5 py-3 text-center font-sans text-sm font-semibold text-primary-foreground"
                         >

@@ -311,7 +311,7 @@ export default function TiendaInsumos() {
           >
             <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
             <motion.div
-              className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-zinc-950/90 p-6 shadow-2xl backdrop-blur-xl md:p-8"
+              className="relative w-full max-w-5xl rounded-2xl border border-white/10 bg-zinc-950/90 p-6 shadow-2xl backdrop-blur-xl md:p-8 overflow-hidden"
               initial={{ opacity: 0, scale: 0.92, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
@@ -327,150 +327,157 @@ export default function TiendaInsumos() {
                 <X className="size-5" />
               </button>
 
-              <img
-                src={`/insumos/${modalProduct.imagen}`}
-                alt={modalProduct.nombre}
-                className="w-full h-48 object-contain rounded-xl mb-4 bg-black p-2"
-                loading="lazy"
-                decoding="async"
-              />
-              <h2 className="mt-4 font-heading text-2xl font-bold text-white">
-                {modalProduct.nombre}
-              </h2>
-              <p className="mt-1 font-sans text-3xl font-extrabold text-[#DC2626]">
-                ${unitPrice.toFixed(2)}
-              </p>
-              <p className="mt-1 font-sans text-xs text-gray-500">
-                Precio por unidad + IVA
-              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="h-[300px] md:h-[500px] bg-zinc-900/50 rounded-xl flex items-center justify-center p-4">
+                  <img
+                    src={`/insumos/${modalProduct.imagen}`}
+                    alt={modalProduct.nombre}
+                    className="w-full h-full object-contain rounded-lg"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
 
-              <div className="mt-6 space-y-5">
-                {modalProduct.colores && (
+                <div className="flex flex-col justify-center space-y-6">
+                  <div>
+                    <h2 className="font-heading text-2xl font-bold text-white">
+                      {modalProduct.nombre}
+                    </h2>
+                    <p className="mt-1 font-sans text-3xl font-extrabold text-[#DC2626]">
+                      ${unitPrice.toFixed(2)}
+                    </p>
+                    <p className="font-sans text-xs text-gray-500">
+                      Precio por unidad + IVA
+                    </p>
+                  </div>
+
+                  {modalProduct.colores && (
+                    <div>
+                      <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
+                        Color: <span className="text-white">{selectedColor}</span>
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {modalProduct.colores.map((color) => (
+                          <button
+                            key={color}
+                            type="button"
+                            onClick={() => setSelectedColor(color)}
+                            className={`flex items-center gap-2 rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
+                              selectedColor === color
+                                ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
+                                : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
+                            }`}
+                          >
+                            <span
+                              className="inline-block size-3.5 rounded-full border border-zinc-600"
+                              style={{ backgroundColor: COLOR_MAP[color] ?? "#666" }}
+                            />
+                            {color}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {modalProduct.voltajes && (
+                    <div>
+                      <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
+                        Voltaje: <span className="text-white">{selectedVoltaje}</span>
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {modalProduct.voltajes.map((opt) => (
+                          <button
+                            key={opt.voltaje}
+                            type="button"
+                            onClick={() => setSelectedVoltaje(opt.voltaje)}
+                            className={`rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
+                              selectedVoltaje === opt.voltaje
+                                ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
+                                : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
+                            }`}
+                          >
+                            {opt.voltaje} — ${opt.precio.toFixed(2)}/u
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {modalProduct.tamanos && (
+                    <div>
+                      <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
+                        Tamaño: <span className="text-white">{selectedSize}</span>
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {modalProduct.tamanos.map((size) => (
+                          <button
+                            key={size}
+                            type="button"
+                            onClick={() => setSelectedSize(size)}
+                            className={`rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
+                              selectedSize === size
+                                ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
+                                : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
+                            }`}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   <div>
                     <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
-                      Color: <span className="text-white">{selectedColor}</span>
+                      Cantidad
                     </p>
-                    <div className="flex flex-wrap gap-2">
-                      {modalProduct.colores.map((color) => (
-                        <button
-                          key={color}
-                          type="button"
-                          onClick={() => setSelectedColor(color)}
-                          className={`flex items-center gap-2 rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
-                            selectedColor === color
-                              ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
-                              : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
-                          }`}
-                        >
-                          <span
-                            className="inline-block size-3.5 rounded-full border border-zinc-600"
-                            style={{ backgroundColor: COLOR_MAP[color] ?? "#666" }}
-                          />
-                          {color}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {modalProduct.voltajes && (
-                  <div>
-                    <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
-                      Voltaje: <span className="text-white">{selectedVoltaje}</span>
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {modalProduct.voltajes.map((opt) => (
-                        <button
-                          key={opt.voltaje}
-                          type="button"
-                          onClick={() => setSelectedVoltaje(opt.voltaje)}
-                          className={`rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
-                            selectedVoltaje === opt.voltaje
-                              ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
-                              : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
-                          }`}
-                        >
-                          {opt.voltaje} — ${opt.precio.toFixed(2)}/u
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {modalProduct.tamanos && (
-                  <div>
-                    <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
-                      Tamaño: <span className="text-white">{selectedSize}</span>
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {modalProduct.tamanos.map((size) => (
-                        <button
-                          key={size}
-                          type="button"
-                          onClick={() => setSelectedSize(size)}
-                          className={`rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
-                            selectedSize === size
-                              ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
-                              : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
-                          }`}
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div>
-                  <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
-                    Cantidad
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setModalCantidad((v) => Math.max(1, v - 1))}
-                      className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-700/50 text-gray-300 transition-colors hover:bg-zinc-800 hover:text-white"
-                      aria-label="Disminuir cantidad"
-                    >
-                      <Minus className="size-4" />
-                    </button>
-                    <input
-                      type="number"
-                      min={1}
-                      value={modalCantidad}
-                      onChange={(e) =>
-                        setModalCantidad(Math.max(1, parseInt(e.target.value) || 1))
-                      }
-                      className="w-20 rounded-xl border border-zinc-700/50 bg-zinc-900/60 px-3 py-2 text-center font-sans text-base font-bold text-white outline-none backdrop-blur-md transition-all duration-300 focus:border-[#DC2626] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setModalCantidad((v) => v + 1)}
-                      className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-700/50 text-gray-300 transition-colors hover:bg-zinc-800 hover:text-white"
-                      aria-label="Aumentar cantidad"
-                    >
-                      <Plus className="size-4" />
-                    </button>
-                    <span className="ml-auto font-sans text-sm text-gray-400">
-                      Subtotal:{" "}
-                      <span className="font-bold text-white">
-                        ${(unitPrice * modalCantidad).toFixed(2)}
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setModalCantidad((v) => Math.max(1, v - 1))}
+                        className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-700/50 text-gray-300 transition-colors hover:bg-zinc-800 hover:text-white"
+                        aria-label="Disminuir cantidad"
+                      >
+                        <Minus className="size-4" />
+                      </button>
+                      <input
+                        type="number"
+                        min={1}
+                        value={modalCantidad}
+                        onChange={(e) =>
+                          setModalCantidad(Math.max(1, parseInt(e.target.value) || 1))
+                        }
+                        className="w-20 rounded-xl border border-zinc-700/50 bg-zinc-900/60 px-3 py-2 text-center font-sans text-base font-bold text-white outline-none backdrop-blur-md transition-all duration-300 focus:border-[#DC2626] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setModalCantidad((v) => v + 1)}
+                        className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-700/50 text-gray-300 transition-colors hover:bg-zinc-800 hover:text-white"
+                        aria-label="Aumentar cantidad"
+                      >
+                        <Plus className="size-4" />
+                      </button>
+                      <span className="ml-auto font-sans text-sm text-gray-400">
+                        Subtotal:{" "}
+                        <span className="font-bold text-white">
+                          ${(unitPrice * modalCantidad).toFixed(2)}
+                        </span>
                       </span>
-                    </span>
+                    </div>
                   </div>
+
+                  <motion.button
+                    type="button"
+                    onClick={addToCart}
+                    className="flex w-full items-center justify-center gap-3 rounded-full bg-[#DC2626] px-6 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#DC2626]/40 active:scale-95"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <Package className="size-5" />
+                    Agregar al carrito
+                  </motion.button>
                 </div>
               </div>
-
-              <motion.button
-                type="button"
-                onClick={addToCart}
-                className="mt-6 flex w-full items-center justify-center gap-3 rounded-full bg-[#DC2626] px-6 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#DC2626]/40 active:scale-95"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Package className="size-5" />
-                Agregar al carrito
-              </motion.button>
             </motion.div>
           </motion.div>
         )}

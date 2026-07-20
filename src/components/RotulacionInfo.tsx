@@ -130,7 +130,7 @@ export default function RotulacionInfo() {
                 Recibe una cotización personalizada sin compromiso en minutos.
               </p>
               <a
-                href="/cotizacion-3d"
+                href="/rotulacion-3d"
                 className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
               >
                 Cotiza tu Rótulo 3D

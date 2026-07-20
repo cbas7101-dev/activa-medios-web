@@ -32,7 +32,7 @@ export default function NosotrosInfo() {
         <img
           src="/logotpo-activa.png"
           alt="Activa Medios"
-          className="mx-auto max-w-md"
+          className="mx-auto max-w-sm brightness-0 invert my-6"
         />
       </motion.div>
 
@@ -42,7 +42,7 @@ export default function NosotrosInfo() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mx-auto mt-8 max-w-5xl space-y-6"
+        className="mx-auto max-w-4xl space-y-6 text-lg"
       >
         <p className="text-lg leading-relaxed">
           Somos una empresa dinámica siempre a la vanguardia, con altos valores agregados,
@@ -72,7 +72,7 @@ export default function NosotrosInfo() {
         className="w-full max-w-6xl mt-16"
       >
         <img
-          src="/fotos/Nuestra-Historia-scaled.jpg"
+          src="/Nuestra-Historia-scaled.jpg"
           alt="Historia de Activa Medios"
           className="h-[400px] w-full rounded-t-[3rem] object-cover shadow-2xl"
           loading="lazy"

@@ -3,46 +3,49 @@
 import { motion } from "framer-motion"
 import { ArrowRight, Megaphone, Monitor, Signpost, Bus, Image, Printer } from "lucide-react"
 
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+type Servicio = {
+  titulo: string
+  desc: string
+  icon: React.ElementType
+  imagen: string
 }
 
-const cardItem = {
-  hidden: { opacity: 0, y: 30, scale: 0.96 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
-}
-
-const SERVICIOS = [
+const SERVICIOS: Servicio[] = [
   {
     titulo: "Publicitarios",
     desc: "Activa tu punto de venta con material P.O.P. y haz que tu empresa se destaque, imprime tu marca en: roll ups, pop ups, exhibidores, porta menús, agendas pasta dura, vidrios publicitarios, carpas, inflables, mesas degustadoras y productos personalizados. ¡Somos el complemento ideal para tu negocio!",
     icon: Megaphone,
+    imagen: "/fotos/Publicitarios-foto-interna-ai-e1679525816548.png",
   },
   {
     titulo: "Diseño Web",
     desc: "Planificamos, diseñamos y desarrollamos su página web buscando el mayor impacto estratégico a la hora de hacer clic con su negocio o empresa. ¡Tus productos y servicios véndelos o promociónalos así de fácil!",
     icon: Monitor,
+    imagen: "/fotos/Diseno-web-foto-interna-2-ai-e1680123248104.png",
   },
   {
     titulo: "Señalética",
     desc: "Soluciones altamente personalizadas: materiales durables y de calidad, aplicaciones foto luminiscentes y reflectivas estandarizadas para brindarle mayor seguridad.",
     icon: Signpost,
+    imagen: "/fotos/Senaletica-foto-interna-ai.png",
   },
   {
     titulo: "Publicidad Móvil",
     desc: "Utilizamos espacios publicitarios en autobuses de transporte público, camiones, furgones, taxis a nivel nacional para mostrar anuncios gráficos o de video en el exterior o interior. Le ofrecemos opciones de segmentación para aumentar la relevancia y la efectividad de las campañas publicitarias.",
     icon: Bus,
+    imagen: "/fotos/Publicidad-movil-foto-interna-ai.png",
   },
   {
     titulo: "Gigantografías",
     desc: "Imprimimos en gran formato para publicidad y promoción en paredes, vallas publicitarias y edificios. Pueden ser personalizadas con gráficos e imágenes y adaptarse a diferentes ubicaciones y audiencias específicas. Impresión para exterior e interior en alta definición: lonas banner, traslúcida, vinil adhesivo mate o brillante, microperforados, laminados, reflectivo, roll ups, pop ups armables. ¡Incluimos el servicio de instalación!",
     icon: Image,
+    imagen: "/fotos/Gigantografias-foto-interna-ai (1).png",
   },
   {
     titulo: "Imprenta",
     desc: "Somos la solución a sus proyectos gráficos e impresos, deseamos que nuestros servicios le ayuden a concretar sus objetivos. Imprime: hojas membretadas, carpetas corporativas, revistas, folletos, libros, tarjetas de presentación, flyers (hojas volantes), dípticos, trípticos, plegables, etiquetas, textos y gráficos en papel y otros materiales, personalizándolos según sus necesidades. Incluye acabados especiales como barniz UV, troquelados, estampados en relieve y láminas en pan de oro o plata para dar calidad y sofisticación.",
     icon: Printer,
+    imagen: "/fotos/Imprenta-foto-interna-ai.png",
   },
 ]
 
@@ -72,41 +75,51 @@ export default function OtrosServiciosInfo() {
           </p>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-        >
-          {SERVICIOS.map((svc) => {
+        <div className="flex flex-col gap-16 md:gap-24">
+          {SERVICIOS.map((svc, index) => {
             const Icon = svc.icon
+            const isEven = index % 2 === 0
             return (
               <motion.div
                 key={svc.titulo}
-                variants={cardItem}
-                className="group flex flex-col rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/20 md:p-8"
+                className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <div className="mb-4 flex size-14 items-center justify-center rounded-xl bg-[#DC2626]/10">
-                  <Icon className="size-7 text-[#DC2626]" />
+                <div className="w-full md:w-1/2">
+                  <img
+                    src={svc.imagen}
+                    alt={svc.titulo}
+                    className="w-full h-auto object-cover rounded-2xl shadow-xl"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white">
-                  {svc.titulo}
-                </h3>
-                <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-gray-400">
-                  {svc.desc}
-                </p>
-                <a
-                  href="/cotizacion-3d"
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#DC2626] px-5 py-3 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#DC2626]/40"
-                >
-                  Cotiza ahora
-                  <ArrowRight className="size-4" />
-                </a>
+
+                <div className="w-full md:w-1/2 flex flex-col justify-center items-start">
+                  <div className="mb-4 flex size-14 items-center justify-center rounded-xl bg-[#DC2626]/10">
+                    <Icon className="size-7 text-[#DC2626]" />
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-white md:text-3xl">
+                    {svc.titulo}
+                  </h3>
+                  <p className="mt-3 font-sans text-sm leading-relaxed text-gray-400 md:text-base">
+                    {svc.desc}
+                  </p>
+                  <a
+                    href="/cotizacion-3d"
+                    className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#DC2626]/40"
+                  >
+                    Cotiza ahora
+                    <ArrowRight className="size-4" />
+                  </a>
+                </div>
               </motion.div>
             )
           })}
-        </motion.div>
+        </div>
 
       </div>
     </div>
