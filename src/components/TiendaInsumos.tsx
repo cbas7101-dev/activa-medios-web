@@ -3,15 +3,16 @@
 import { useState, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
-  ShoppingCart, Plus, Minus, Trash2, X, MessageCircle, Package
+  ShoppingCart, Plus, Minus, Trash2, X, MessageCircle
 } from "lucide-react"
+import ModalCompra from "./ModalCompra"
 
 type VoltajeOption = {
   voltaje: string
   precio: number
 }
 
-type Producto = {
+export type Producto = {
   id: number
   nombre: string
   precio: number
@@ -81,18 +82,6 @@ function buildVarianteLabel(color: string, size: string, voltaje: string) {
   return parts.length ? parts.join(", ") : ""
 }
 
-const COLOR_MAP: Record<string, string> = {
-  Rojo: "#DC2626",
-  Blanco: "#F5F5F5",
-  Amarillo: "#EAB308",
-  Plateado: "#A1A1AA",
-  Verde: "#22C55E",
-  Negro: "#1A1A1A",
-  Azul: "#3B82F6",
-  Cálido: "#F59E0B",
-  Plata: "#A1A1AA",
-}
-
 const staggerCard = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
@@ -108,56 +97,28 @@ export default function TiendaInsumos() {
   const [cart, setCart] = useState<CartItem[]>([])
 
   const [modalProduct, setModalProduct] = useState<Producto | null>(null)
-  const [selectedColor, setSelectedColor] = useState("")
-  const [selectedSize, setSelectedSize] = useState("")
-  const [selectedVoltaje, setSelectedVoltaje] = useState("")
-  const [modalCantidad, setModalCantidad] = useState(1)
 
-  const unitPrice = useMemo(() => {
-    if (!modalProduct) return 0
-    if (modalProduct.voltajes && selectedVoltaje) {
-      const opt = modalProduct.voltajes.find((v) => v.voltaje === selectedVoltaje)
-      if (opt) return opt.precio
-    }
-    return modalProduct.precio
-  }, [modalProduct, selectedVoltaje])
-
-  const openModal = (producto: Producto) => {
-    setModalProduct(producto)
-    setSelectedColor(producto.colores?.[0] ?? "")
-    setSelectedSize(producto.tamanos?.[0] ?? "")
-    setSelectedVoltaje(producto.voltajes?.[0]?.voltaje ?? "")
-    setModalCantidad(1)
-  }
-
-  const closeModal = () => setModalProduct(null)
-
-  const addToCart = () => {
-    if (!modalProduct) return
-    const cartKey = buildCartKey(modalProduct.id, selectedColor, selectedSize, selectedVoltaje)
-    const variante = buildVarianteLabel(selectedColor, selectedSize, selectedVoltaje)
+  const addToCartFromModal = (product: Producto, color: string, size: string, voltaje: string, cantidad: number) => {
+    const cartKey = buildCartKey(product.id, color, size, voltaje)
+    const variante = buildVarianteLabel(color, size, voltaje)
+    const price = product.voltajes && voltaje
+      ? product.voltajes.find((v) => v.voltaje === voltaje)?.precio ?? product.precio
+      : product.precio
     setCart((prev) => {
       const existing = prev.find((item) => item.cartKey === cartKey)
       if (existing) {
         return prev.map((item) =>
           item.cartKey === cartKey
-            ? { ...item, cantidad: item.cantidad + modalCantidad }
+            ? { ...item, cantidad: item.cantidad + cantidad }
             : item
         )
       }
       return [
         ...prev,
-        {
-          cartKey,
-          id: modalProduct.id,
-          nombre: modalProduct.nombre,
-          variante,
-          precio: unitPrice,
-          cantidad: modalCantidad,
-        },
+        { cartKey, id: product.id, nombre: product.nombre, variante, precio: price, cantidad },
       ]
     })
-    closeModal()
+    setModalProduct(null)
     setCartOpen(true)
   }
 
@@ -257,8 +218,8 @@ export default function TiendaInsumos() {
             <motion.div
               key={producto.id}
               variants={cardItem}
-              className="group flex cursor-pointer flex-col rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:bg-zinc-900/60 hover:shadow-xl hover:shadow-red-900/10"
-              onClick={() => openModal(producto)}
+              className="group flex cursor-pointer flex-col rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:bg-zinc-900/60 hover:shadow-xl hover:shadow-red-900/10 will-change-[transform]"
+              onClick={() => setModalProduct(producto)}
             >
               <img
                 src={`/insumos/${producto.imagen}`}
@@ -289,7 +250,7 @@ export default function TiendaInsumos() {
                 </span>
                 <span
                   className="text-red-700 hover:text-red-600 text-xs font-bold uppercase transition-colors cursor-pointer"
-                  onClick={(e) => { e.stopPropagation(); openModal(producto) }}
+                  onClick={(e) => { e.stopPropagation(); setModalProduct(producto) }}
                 >
                   VER PRODUCTO
                 </span>
@@ -300,188 +261,11 @@ export default function TiendaInsumos() {
         </motion.div>
       </div>
 
-      <AnimatePresence>
-        {modalProduct && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closeModal}
-          >
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
-            <motion.div
-              className="relative w-full max-w-5xl rounded-2xl border border-white/10 bg-zinc-950/90 p-6 shadow-2xl backdrop-blur-xl md:p-8 overflow-hidden"
-              initial={{ opacity: 0, scale: 0.92, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 20 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={closeModal}
-                className="absolute top-4 right-4 inline-flex size-8 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-zinc-800 hover:text-white"
-                aria-label="Cerrar"
-              >
-                <X className="size-5" />
-              </button>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="h-[300px] md:h-[500px] bg-zinc-900/50 rounded-xl flex items-center justify-center p-4">
-                  <img
-                    src={`/insumos/${modalProduct.imagen}`}
-                    alt={modalProduct.nombre}
-                    className="w-full h-full object-contain rounded-lg"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-
-                <div className="flex flex-col justify-center space-y-6">
-                  <div>
-                    <h2 className="font-heading text-2xl font-bold text-white">
-                      {modalProduct.nombre}
-                    </h2>
-                    <p className="mt-1 font-sans text-3xl font-extrabold text-[#DC2626]">
-                      ${unitPrice.toFixed(2)}
-                    </p>
-                    <p className="font-sans text-xs text-gray-500">
-                      Precio por unidad + IVA
-                    </p>
-                  </div>
-
-                  {modalProduct.colores && (
-                    <div>
-                      <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
-                        Color: <span className="text-white">{selectedColor}</span>
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {modalProduct.colores.map((color) => (
-                          <button
-                            key={color}
-                            type="button"
-                            onClick={() => setSelectedColor(color)}
-                            className={`flex items-center gap-2 rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
-                              selectedColor === color
-                                ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
-                                : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
-                            }`}
-                          >
-                            <span
-                              className="inline-block size-3.5 rounded-full border border-zinc-600"
-                              style={{ backgroundColor: COLOR_MAP[color] ?? "#666" }}
-                            />
-                            {color}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {modalProduct.voltajes && (
-                    <div>
-                      <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
-                        Voltaje: <span className="text-white">{selectedVoltaje}</span>
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {modalProduct.voltajes.map((opt) => (
-                          <button
-                            key={opt.voltaje}
-                            type="button"
-                            onClick={() => setSelectedVoltaje(opt.voltaje)}
-                            className={`rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
-                              selectedVoltaje === opt.voltaje
-                                ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
-                                : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
-                            }`}
-                          >
-                            {opt.voltaje} — ${opt.precio.toFixed(2)}/u
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {modalProduct.tamanos && (
-                    <div>
-                      <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
-                        Tamaño: <span className="text-white">{selectedSize}</span>
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {modalProduct.tamanos.map((size) => (
-                          <button
-                            key={size}
-                            type="button"
-                            onClick={() => setSelectedSize(size)}
-                            className={`rounded-full border px-4 py-1.5 font-sans text-xs font-medium transition-all ${
-                              selectedSize === size
-                                ? "border-[#DC2626] bg-[#DC2626]/10 text-white ring-1 ring-[#DC2626]"
-                                : "border-zinc-700/50 text-gray-400 hover:border-zinc-500 hover:text-gray-200"
-                            }`}
-                          >
-                            {size}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  <div>
-                    <p className="mb-2 font-sans text-sm font-semibold text-gray-300">
-                      Cantidad
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <button
-                        type="button"
-                        onClick={() => setModalCantidad((v) => Math.max(1, v - 1))}
-                        className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-700/50 text-gray-300 transition-colors hover:bg-zinc-800 hover:text-white"
-                        aria-label="Disminuir cantidad"
-                      >
-                        <Minus className="size-4" />
-                      </button>
-                      <input
-                        type="number"
-                        min={1}
-                        value={modalCantidad}
-                        onChange={(e) =>
-                          setModalCantidad(Math.max(1, parseInt(e.target.value) || 1))
-                        }
-                        className="w-20 rounded-xl border border-zinc-700/50 bg-zinc-900/60 px-3 py-2 text-center font-sans text-base font-bold text-white outline-none backdrop-blur-md transition-all duration-300 focus:border-[#DC2626] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setModalCantidad((v) => v + 1)}
-                        className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-700/50 text-gray-300 transition-colors hover:bg-zinc-800 hover:text-white"
-                        aria-label="Aumentar cantidad"
-                      >
-                        <Plus className="size-4" />
-                      </button>
-                      <span className="ml-auto font-sans text-sm text-gray-400">
-                        Subtotal:{" "}
-                        <span className="font-bold text-white">
-                          ${(unitPrice * modalCantidad).toFixed(2)}
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-
-                  <motion.button
-                    type="button"
-                    onClick={addToCart}
-                    className="flex w-full items-center justify-center gap-3 rounded-full bg-[#DC2626] px-6 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#DC2626]/40 active:scale-95"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    <Package className="size-5" />
-                    Agregar al carrito
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ModalCompra
+        product={modalProduct}
+        onClose={() => setModalProduct(null)}
+        onAddToCart={addToCartFromModal}
+      />
 
       <AnimatePresence>
         {cartOpen && (
