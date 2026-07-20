@@ -66,7 +66,7 @@ export default function GaleriaProyectos() {
   }
 
   return (
-    <div className="relative min-h-screen bg-black pt-24 pb-16">
+    <div className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-black pt-24 pb-16">
       <div className="absolute top-1/3 left-1/4 size-80 rounded-full bg-red-600/5 blur-[120px]" />
       <div className="absolute bottom-1/4 right-1/4 size-72 rounded-full bg-red-600/5 blur-[100px]" />
 
@@ -185,6 +185,7 @@ export default function GaleriaProyectos() {
                   src={filtradas[lightboxIdx].imagen}
                   alt={filtradas[lightboxIdx].titulo}
                   className="size-full object-cover"
+                  loading="lazy"
                 />
               </div>
               <p className="mt-4 font-sans text-lg font-bold text-white">

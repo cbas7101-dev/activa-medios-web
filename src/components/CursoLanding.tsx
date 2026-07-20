@@ -38,12 +38,12 @@ const cardItem = {
 
 export default function CursoLanding() {
   return (
-    <div className="relative min-h-screen bg-black pt-24 pb-16">
+    <div className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-black pt-24 pb-16">
       <div className="absolute top-1/4 left-1/3 size-96 rounded-full bg-red-600/5 blur-[120px]" />
       <div className="absolute bottom-1/3 right-1/4 size-80 rounded-full bg-red-600/5 blur-[100px]" />
 
       <motion.section
-        className="relative w-full bg-cover bg-top bg-no-repeat"
+        className="relative -mt-24 w-full bg-cover bg-top bg-no-repeat"
         style={{ backgroundImage: "url('/fotos/Cursos-foto-interna-ai.png')" }}
         initial="hidden"
         animate="visible"
@@ -187,22 +187,14 @@ export default function CursoLanding() {
             <h2 className="mb-8 text-center font-heading text-2xl font-bold text-white md:text-3xl lg:text-left">
               ¿Qué incluye?
             </h2>
-            <motion.div
-              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md md:p-8"
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {INCLUYE.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
-                    <span className="font-sans text-sm text-gray-300">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            <ul className="space-y-3">
+              {INCLUYE.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
+                  <span className="font-sans text-sm text-gray-300">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
@@ -213,7 +205,7 @@ export default function CursoLanding() {
               Formas de pago flexibles para ti
             </p>
             <motion.div
-              className="grid grid-cols-1 gap-6"
+              className="grid grid-cols-1 gap-6 md:grid-cols-2"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"

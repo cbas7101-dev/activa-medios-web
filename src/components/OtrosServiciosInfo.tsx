@@ -51,7 +51,7 @@ const SERVICIOS: Servicio[] = [
 
 export default function OtrosServiciosInfo() {
   return (
-    <div className="relative min-h-screen bg-black pt-24 pb-16">
+    <div className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-black pt-24 pb-16">
       <div className="absolute top-1/4 right-1/4 size-96 rounded-full bg-red-600/5 blur-[140px]" />
       <div className="absolute bottom-1/4 left-1/4 size-80 rounded-full bg-red-600/5 blur-[120px]" />
 

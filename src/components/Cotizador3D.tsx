@@ -168,7 +168,7 @@ export default function Cotizador3D() {
     const progressPercent = ((step - 1) / 3) * 100
 
     return (
-        <div className="relative min-h-screen bg-black pt-24 pb-16">
+        <div className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-black pt-24 pb-16">
             <div className="absolute top-1/4 left-1/4 size-96 rounded-full bg-red-600/5 blur-[120px]" />
             <div className="absolute bottom-1/4 right-1/4 size-80 rounded-full bg-red-600/5 blur-[100px]" />
 
@@ -240,7 +240,7 @@ export default function Cotizador3D() {
                                             type="text"
                                             value={telefono}
                                             onChange={(e) => setTelefono(e.target.value)}
-                                            placeholder="+51 999 888 777"
+                                            placeholder="+593 999 099 175"
                                             className="w-full rounded-xl border border-zinc-700/50 bg-zinc-900/60 px-4 py-3 font-sans text-white placeholder-gray-500 outline-none backdrop-blur-md transition-all duration-300 focus:border-[#DC2626] focus:shadow-lg focus:shadow-red-900/10"
                                         />
                                     </div>

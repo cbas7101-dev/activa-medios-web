@@ -33,6 +33,7 @@ export default function NosotrosInfo() {
           src="/logotpo-activa.png"
           alt="Activa Medios"
           className="mx-auto max-w-sm brightness-0 invert my-6"
+          loading="lazy"
         />
       </motion.div>
 
@@ -72,7 +73,7 @@ export default function NosotrosInfo() {
         className="w-full max-w-6xl mt-16"
       >
         <img
-          src="/Nuestra-Historia-scaled.jpg"
+          src="/fotos/Nuestra-Historia-scaled.jpg"
           alt="Historia de Activa Medios"
           className="h-[400px] w-full rounded-t-[3rem] object-cover shadow-2xl"
           loading="lazy"

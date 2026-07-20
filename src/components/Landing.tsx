@@ -54,7 +54,7 @@ export default function Page() {
     }, [])
 
     return (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-background">
             <main>
                 <section id="inicio" className="relative flex min-h-screen items-center justify-center overflow-hidden">
                     <AnimatePresence mode="wait">
@@ -70,6 +70,7 @@ export default function Page() {
                                 src={SLIDER_IMAGES[currentSlide]}
                                 alt="Proyecto de rotulación 3D de Activa Medios"
                                 className="size-full object-cover"
+                                loading="lazy"
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
                             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
@@ -123,6 +124,7 @@ export default function Page() {
                                     src="/fotos/Bucodent.jpg"
                                     alt="Letras corpóreas 3D iluminadas en acrílico y neón LED"
                                     className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    loading="lazy"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
                                 <div className="relative z-10 p-6 md:p-9">
@@ -152,6 +154,7 @@ export default function Page() {
                                     src="/insumos/leds.jpeg"
                                     alt="Insumos y materiales para rotulación"
                                     className="absolute inset-0 size-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-75"
+                                    loading="lazy"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
                                 <div className="relative z-10 p-6">
@@ -172,6 +175,7 @@ export default function Page() {
                                     src="/fotos/Cursos-foto-interna-ai.png"
                                     alt="Cursos de rotulación y fabricación de letras 3D"
                                     className="absolute inset-0 size-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-75"
+                                    loading="lazy"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
                                 <div className="relative z-10 p-6">
@@ -260,7 +264,7 @@ export default function Page() {
                         compromiso.
                     </p>
                     <a
-                        href="/rotulacion-3d"
+                        href="/cotizacion-3d"
                         className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-sans text-base font-semibold text-primary-foreground shadow-xl shadow-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/40"
                     >
                         Cotiza tu Rótulo 3D

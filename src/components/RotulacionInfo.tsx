@@ -47,13 +47,13 @@ const MATERIALES = [
 
 export default function RotulacionInfo() {
   return (
-    <div className="relative min-h-screen bg-black pt-24 pb-16">
+    <div className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-black pt-24 pb-16">
       <div className="absolute top-1/4 left-1/4 size-96 rounded-full bg-red-600/5 blur-[120px]" />
       <div className="absolute bottom-1/4 right-1/4 size-80 rounded-full bg-red-600/5 blur-[100px]" />
 
         {/* HERO - full width */}
         <motion.div
-          className="relative flex w-full min-h-[60vh] flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-20 text-center"
+            className="relative -mt-24 flex w-full min-h-[60vh] flex-col items-center justify-center bg-cover bg-center bg-no-repeat pb-20 pt-24 text-center"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -63,7 +63,8 @@ export default function RotulacionInfo() {
             <img
               src="/fotos/rotulos3d.png"
               alt=""
-              className="h-full w-full object-cover opacity-30"
+              className="h-full w-full object-cover object-top opacity-30"
+              loading="lazy"
             />
           </div>
 
@@ -130,7 +131,7 @@ export default function RotulacionInfo() {
                 Recibe una cotización personalizada sin compromiso en minutos.
               </p>
               <a
-                href="/rotulacion-3d"
+                href="/cotizacion-3d"
                 className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
               >
                 Cotiza tu Rótulo 3D
