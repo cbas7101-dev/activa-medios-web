@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, Sparkles, Layers, Box, ShieldCheck } from "lucide-react"
+import { ArrowRight, Sparkles } from "lucide-react"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,34 +16,6 @@ const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
 }
-
-const materialItem = {
-  hidden: { opacity: 0, y: 24, scale: 0.95 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: "easeOut" } },
-}
-
-const MATERIALES = [
-  {
-    titulo: "Acrílico",
-    desc: "Acabado brillante y profesional. Ideal para letras corpóreas iluminadas y paneles luminosos de alta gama.",
-    Icon: Layers,
-  },
-  {
-    titulo: "PVC",
-    desc: "Ligero, resistente y económico. Perfecto para rótulos interiores, señalética y letras sin iluminación.",
-    Icon: Box,
-  },
-  {
-    titulo: "Aluminio Compuesto",
-    desc: "Máxima durabilidad para exteriores. Resistente a la intemperie, ideal para fachadas comerciales y corporativas.",
-    Icon: ShieldCheck,
-  },
-  {
-    titulo: "Neón Flex LED",
-    desc: "Tecnología LED flexible que imita el neón clásico. Eficiente, duradero y con colores vibrantes.",
-    Icon: Sparkles,
-  },
-]
 
 export default function RotulacionInfo() {
   return (
@@ -141,7 +113,7 @@ export default function RotulacionInfo() {
           </div>
         </motion.section>
 
-        {/* MATERIALES */}
+        {/* GALERÍA 3D */}
         <motion.section
           className="py-16 md:py-20"
           initial={{ opacity: 0, y: 30 }}
@@ -151,38 +123,26 @@ export default function RotulacionInfo() {
         >
           <div className="mb-12 max-w-2xl">
             <span className="font-sans text-sm font-semibold uppercase tracking-wider text-[#DC2626]">
-              Materiales
+              Galería 3D
             </span>
             <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-balance text-white md:text-4xl">
-              Trabajamos con los mejores materiales
+              Explora nuestros acabados
             </h2>
           </div>
 
-          <motion.div
-            className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {MATERIALES.map((mat) => (
-              <motion.div
-                key={mat.titulo}
-                variants={materialItem}
-                className="group rounded-2xl border border-transparent bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-red-600 hover:shadow-[0_0_15px_rgba(220,38,38,0.2)]"
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+            {["Metal", "Acrílico", "Aluminio", "Acero", "Bronce"].map((titulo) => (
+              <div
+                key={titulo}
+                className="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-red-600 hover:shadow-[0_0_15px_rgba(220,38,38,0.2)]"
               >
-                <div className="mb-4 flex size-14 items-center justify-center rounded-xl bg-zinc-800/50 backdrop-blur-md">
-                  <mat.Icon className="size-7 text-red-600" />
+                <div className="aspect-square w-full bg-zinc-800/80" />
+                <div className="p-5">
+                  <h3 className="font-heading text-lg font-bold text-white">{titulo}</h3>
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white">
-                  {mat.titulo}
-                </h3>
-                <p className="mt-3 font-sans text-sm leading-relaxed text-gray-400">
-                  {mat.desc}
-                </p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </motion.section>
 
       </div>

@@ -42,7 +42,7 @@ export default function ModalCompra({ product, onClose, onAddToCart }: ModalComp
       setSelectedColor(product.colores?.[0] ?? "")
       setSelectedSize(product.tamanos?.[0] ?? "")
       setSelectedVoltaje(product.voltajes?.[0]?.voltaje ?? "")
-      setCantidad(1)
+      setCantidad(product.id === 2 ? 20 : 1)
       requestAnimationFrame(() => setVisible(true))
     } else if (localProduct) {
       setVisible(false)
@@ -204,7 +204,7 @@ export default function ModalCompra({ product, onClose, onAddToCart }: ModalComp
               <div className="flex items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => setCantidad((v) => Math.max(1, v - 1))}
+                  onClick={() => setCantidad((v) => Math.max(localProduct?.id === 2 ? 20 : 1, v - (localProduct?.id === 2 ? 20 : 1)))}
                   className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-700/50 text-gray-300 transition-colors hover:bg-zinc-800 hover:text-white"
                   aria-label="Disminuir cantidad"
                 >
@@ -212,16 +212,19 @@ export default function ModalCompra({ product, onClose, onAddToCart }: ModalComp
                 </button>
                 <input
                   type="number"
-                  min={1}
+                  min={localProduct?.id === 2 ? 20 : 1}
+                  step={localProduct?.id === 2 ? 20 : 1}
                   value={cantidad}
-                  onChange={(e) =>
-                    setCantidad(Math.max(1, parseInt(e.target.value) || 1))
-                  }
+                  onChange={(e) => {
+                    const raw = parseInt(e.target.value) || (localProduct?.id === 2 ? 20 : 1)
+                    const step = localProduct?.id === 2 ? 20 : 1
+                    setCantidad(Math.max(step, Math.round(raw / step) * step))
+                  }}
                   className="w-20 rounded-xl border border-zinc-700/50 bg-zinc-900/60 px-3 py-2 text-center font-sans text-base font-bold text-white outline-none backdrop-blur-md transition-all duration-300 focus:border-[#DC2626] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
                 <button
                   type="button"
-                  onClick={() => setCantidad((v) => v + 1)}
+                  onClick={() => setCantidad((v) => v + (localProduct?.id === 2 ? 20 : 1))}
                   className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-700/50 text-gray-300 transition-colors hover:bg-zinc-800 hover:text-white"
                   aria-label="Aumentar cantidad"
                 >

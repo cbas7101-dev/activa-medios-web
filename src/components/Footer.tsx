@@ -5,16 +5,15 @@ export default function Footer() {
         <footer className="border-t border-border bg-background">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-16 md:grid-cols-4 md:px-8">
                 <div className="md:col-span-2">
-                    <a href="/" className="inline-flex items-center gap-2" aria-label="Activa Medios inicio">
-                        <span className="font-heading text-2xl font-extrabold uppercase tracking-tight text-foreground">
-                            Activa
-                        </span>
-                        <span className="font-heading text-2xl font-extrabold uppercase tracking-tight text-primary">
-                            Medios
-                        </span>
+                    <a href="/" aria-label="Activa Medios inicio">
+                        <img
+                            src="/logotpo-activa.png"
+                            alt="Activa Medios Logo"
+                            className="mb-4 w-32 object-contain"
+                        />
                     </a>
-                    <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-muted-foreground">
-                        Agencia de comunicación visual especializada en rotulación 3D, letras corpóreas y
+                    <p className="max-w-sm font-sans text-sm leading-relaxed text-muted-foreground">
+                        Empresa de comunicación visual especializada en rotulación 3D, letras corpóreas y
                         soluciones luminosas que transforman espacios y hacen crecer tu marca.
                     </p>
                 </div>

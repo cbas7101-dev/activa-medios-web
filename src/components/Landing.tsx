@@ -118,17 +118,18 @@ export default function Page() {
                             <motion.a
                                 href="/rotulacion-3d"
                                 variants={cardItem}
-                                className="group relative col-span-1 row-span-2 flex min-h-96 flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20 lg:col-span-2"
+                                className="group col-span-1 row-span-2 flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20 lg:col-span-2"
                             >
-                                <img
-                                    src="/fotos/Bucodent.jpg"
-                                    alt="Letras corpóreas 3D iluminadas en acrílico y neón LED"
-                                    className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    loading="lazy"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-                                <div className="relative z-10 p-6 md:p-9">
-                                    <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1 font-sans text-xs font-semibold uppercase tracking-wider text-primary-foreground">
+                                <div className="relative w-full overflow-hidden">
+                                    <img
+                                        src="/fotos/Bucodent.jpg"
+                                        alt="Letras corpóreas 3D iluminadas en acrílico y neón LED"
+                                        className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div className="flex flex-1 flex-col justify-end p-6 md:p-9">
+                                    <span className="inline-flex items-center gap-2 self-start rounded-full bg-primary px-3 py-1 font-sans text-xs font-semibold uppercase tracking-wider text-primary-foreground">
                                         Servicio estrella
                                     </span>
                                     <h3 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
@@ -138,7 +139,7 @@ export default function Page() {
                                         Letras corpóreas iluminadas y no iluminadas. Diseño, fabricación e instalación
                                         profesional que hace destacar tu marca.
                                     </p>
-                                    <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-foreground/30 bg-background/40 px-5 py-2.5 font-sans text-sm font-semibold text-foreground backdrop-blur transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground">
+                                    <span className="mt-6 inline-flex items-center gap-2 self-start rounded-full border border-foreground/30 bg-background/40 px-5 py-2.5 font-sans text-sm font-semibold text-foreground backdrop-blur transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground">
                                         Cotizar rótulo 3D
                                         <ArrowUpRight className="size-4" />
                                     </span>
@@ -148,16 +149,17 @@ export default function Page() {
                             <motion.a
                                 href="/insumos"
                                 variants={cardItem}
-                                className="group relative flex min-h-44 flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20"
+                                className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20"
                             >
-                                <img
-                                    src="/insumos/leds.jpeg"
-                                    alt="Insumos y materiales para rotulación"
-                                    className="absolute inset-0 size-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-75"
-                                    loading="lazy"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
-                                <div className="relative z-10 p-6">
+                                <div className="relative w-full overflow-hidden">
+                                    <img
+                                        src="/insumos/leds.jpeg"
+                                        alt="Insumos y materiales para rotulación"
+                                        className="w-full aspect-video object-cover transition-all duration-700 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div className="flex flex-1 flex-col justify-end p-6">
                                     <Package className="size-6 text-accent" />
                                     <h3 className="mt-3 font-heading text-xl font-bold text-foreground">Insumos</h3>
                                     <p className="mt-1 font-sans text-sm text-muted-foreground">
@@ -169,16 +171,17 @@ export default function Page() {
                             <motion.a
                                 href="/cursos"
                                 variants={cardItem}
-                                className="group relative flex min-h-44 flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20"
+                                className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20"
                             >
-                                <img
-                                    src="/fotos/Cursos-foto-interna-ai.png"
-                                    alt="Cursos de rotulación y fabricación de letras 3D"
-                                    className="absolute inset-0 size-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-75"
-                                    loading="lazy"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
-                                <div className="relative z-10 p-6">
+                                <div className="relative w-full overflow-hidden">
+                                    <img
+                                        src="/fotos/Cursos-foto-interna-ai.png"
+                                        alt="Cursos de rotulación y fabricación de letras 3D"
+                                        className="w-full aspect-video object-cover transition-all duration-700 group-hover:scale-105"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div className="flex flex-1 flex-col justify-end p-6">
                                     <GraduationCap className="size-6 text-accent" />
                                     <h3 className="mt-3 font-heading text-xl font-bold text-foreground">Cursos</h3>
                                     <p className="mt-1 font-sans text-sm text-muted-foreground">
