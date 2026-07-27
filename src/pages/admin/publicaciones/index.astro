@@ -1,0 +1,12 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import PublicationsList from '../../../components/admin/PublicationsList.tsx';
+import Calendar from '../../../components/admin/Calendar.tsx';
+---
+
+<AdminLayout>
+  <PublicationsList client:load />
+  <div class="mt-6">
+    <Calendar client:load />
+  </div>
+</AdminLayout>

@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, Sparkles } from "lucide-react"
 
@@ -17,7 +18,10 @@ const staggerContainer = {
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
 }
 
+const CATEGORIAS_GALERIA = ["Metal", "Acrílico", "Aluminio", "Acero", "Bronce"]
+
 export default function RotulacionInfo() {
+  const [activeTab, setActiveTab] = useState("Metal")
   return (
     <div className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-black pt-24 pb-16">
       <div className="absolute top-1/4 left-1/4 size-96 rounded-full bg-red-600/5 blur-[120px]" />
@@ -36,7 +40,7 @@ export default function RotulacionInfo() {
               src="/fotos/rotulos3d.png"
               alt=""
               className="h-full w-full object-cover object-top opacity-30"
-              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -74,7 +78,7 @@ export default function RotulacionInfo() {
             <motion.div variants={fadeUp} custom={3} className="mt-8">
               <a
                 href="/cotizacion-3d"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
               >
                 Cotiza tu rótulo 3D
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -84,6 +88,59 @@ export default function RotulacionInfo() {
         </motion.div>
 
       <div className="mx-auto max-w-7xl px-4 md:px-8">
+
+        {/* NUEVA GALERÍA 3D */}
+        <motion.section
+          id="galeria-3d"
+          className="py-16 md:py-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="mb-12 max-w-2xl">
+            <span className="font-sans text-sm font-semibold uppercase tracking-wider text-[#DC2626]">
+              Galería 3D
+            </span>
+            <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-balance text-white md:text-4xl">
+              Explora nuestros acabados
+            </h2>
+          </div>
+
+          <div className="mb-10 flex flex-wrap justify-center gap-2">
+            {CATEGORIAS_GALERIA.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setActiveTab(cat)}
+                className={`rounded-full px-5 py-2 font-sans text-sm font-semibold transition-all duration-300 ${
+                  activeTab === cat
+                    ? "bg-[#DC2626] text-white shadow-lg shadow-[#DC2626]/30"
+                    : "bg-zinc-800/50 text-gray-400 backdrop-blur-md hover:bg-zinc-700 hover:text-gray-200"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <motion.div
+                key={i}
+                className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
+              >
+                <img
+                  src={`/fotos/${activeTab.toLowerCase()}-${i}.jpg`}
+                  alt={`${activeTab} ${i}`}
+                  className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
 
         {/* CTA - ¿Listo para tu rótulo 3D? */}
         <motion.section
@@ -104,7 +161,7 @@ export default function RotulacionInfo() {
               </p>
               <a
                 href="/cotizacion-3d"
-                className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
+                className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
               >
                 Cotiza tu Rótulo 3D
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -113,37 +170,7 @@ export default function RotulacionInfo() {
           </div>
         </motion.section>
 
-        {/* GALERÍA 3D */}
-        <motion.section
-          className="py-16 md:py-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="mb-12 max-w-2xl">
-            <span className="font-sans text-sm font-semibold uppercase tracking-wider text-[#DC2626]">
-              Galería 3D
-            </span>
-            <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-balance text-white md:text-4xl">
-              Explora nuestros acabados
-            </h2>
-          </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {["Metal", "Acrílico", "Aluminio", "Acero", "Bronce"].map((titulo) => (
-              <div
-                key={titulo}
-                className="group overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-red-600 hover:shadow-[0_0_15px_rgba(220,38,38,0.2)]"
-              >
-                <div className="aspect-square w-full bg-zinc-800/80" />
-                <div className="p-5">
-                  <h3 className="font-heading text-lg font-bold text-white">{titulo}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.section>
 
       </div>
     </div>

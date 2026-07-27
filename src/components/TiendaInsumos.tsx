@@ -34,7 +34,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 2, nombre: "LEDs 12V / 110V Luz Blanca y Cálida", precio: 0.35, imagen: "leds.jpeg",
     categoria: "ILUMINACIÓN", especificaciones: ["12V", "110V", "5 colores"],
-    colores: ["Blanco", "Cálido", "Rojo", "Azul", "Verde"],
+    colores: ["Blanco", "Cálido"],
     voltajes: [
       { voltaje: "12V", precio: 0.35 },
       { voltaje: "110V", precio: 0.42 },
@@ -43,7 +43,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 3, nombre: "Mini LEDs 110V Luz Blanca y Cálida", precio: 0.40, imagen: "mini-leds.jpeg",
     categoria: "ILUMINACIÓN", especificaciones: ["110V", "5 colores"],
-    colores: ["Blanco", "Cálido", "Rojo", "Azul", "Verde"],
+    colores: ["Blanco", "Cálido"],
   },
   {
     id: 4, nombre: "Silvatream 3/4\"", precio: 25.00, imagen: "silvatream.jpeg",
@@ -189,7 +189,7 @@ export default function TiendaInsumos() {
           <motion.button
             type="button"
             onClick={() => setCartOpen(true)}
-            className="relative inline-flex size-12 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-900/60 backdrop-blur-md transition-all duration-300 hover:bg-zinc-800 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-900/10"
+            className="relative inline-flex size-12 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-900/60 backdrop-blur-md transition-transform duration-300 hover:bg-zinc-800 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-900/10"
             aria-label="Abrir carrito"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -218,7 +218,7 @@ export default function TiendaInsumos() {
             <motion.div
               key={producto.id}
               variants={cardItem}
-              className="group flex cursor-pointer flex-col rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:bg-zinc-900/60 hover:shadow-xl hover:shadow-red-900/10 will-change-[transform]"
+              className="group flex cursor-pointer flex-col rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:bg-zinc-900/60 hover:shadow-xl hover:shadow-red-900/10 will-change-[transform]"
               onClick={() => setModalProduct(producto)}
             >
               <img
@@ -335,7 +335,7 @@ export default function TiendaInsumos() {
                       <motion.li
                         key={item.cartKey}
                         variants={cardItem}
-                        className="flex items-center gap-4 rounded-xl border border-white/10 bg-zinc-900/60 p-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-900/5"
+                        className="flex items-center gap-4 rounded-xl border border-white/10 bg-zinc-900/60 p-4 backdrop-blur-md transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-900/5"
                       >
                         <div className="flex-1 min-w-0">
                           <p className="font-sans text-sm font-semibold text-white truncate">
@@ -410,7 +410,7 @@ export default function TiendaInsumos() {
                     href={`https://wa.me/593999099175?text=${encodeURIComponent(whatsappMessage)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-5 flex w-full items-center justify-center gap-3 rounded-full bg-[#25D366] px-6 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#25D366]/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#25D366]/40 active:scale-95"
+                    className="mt-5 flex w-full items-center justify-center gap-3 rounded-full bg-[#25D366] px-6 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#25D366]/30 transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#25D366]/40 active:scale-95"
                   >
                     <MessageCircle className="size-5" />
                     Enviar pedido por WhatsApp

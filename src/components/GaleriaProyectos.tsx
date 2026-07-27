@@ -11,7 +11,7 @@ type Proyecto = {
   imagen: string
 }
 
-const CATEGORIAS = ["Todos", "Rotulación 3D", "Cursos", "Señaléticas", "Acrílicos"]
+const CATEGORIAS = ["Todos", "Publicitarios", "Diseño Web", "Publicidad Móvil", "Imprenta", "Gigantografías"]
 
 const PROYECTOS: Proyecto[] = [
   { id: 1, titulo: "Letras Corpóreas Doradas", categoria: "Rotulación 3D", imagen: "/Galeria/Tpazio-2.jpg" },
@@ -91,12 +91,18 @@ export default function GaleriaProyectos() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
         >
+          <a
+            href="/rotulacion-3d#galeria-3d"
+            className="rounded-full px-5 py-2 font-sans text-sm font-semibold transition-transform duration-300 bg-zinc-800/50 text-gray-400 backdrop-blur-md hover:bg-zinc-700 hover:text-gray-200"
+          >
+            Rotulación 3D
+          </a>
           {CATEGORIAS.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setActiva(cat)}
-              className={`rounded-full px-5 py-2 font-sans text-sm font-semibold transition-all duration-300 ${
+              className={`rounded-full px-5 py-2 font-sans text-sm font-semibold transition-transform duration-300 ${
                 activa === cat
                   ? "bg-[#DC2626] text-white shadow-lg shadow-[#DC2626]/30"
                   : "bg-zinc-800/50 text-gray-400 backdrop-blur-md hover:bg-zinc-700 hover:text-gray-200"
@@ -120,21 +126,22 @@ export default function GaleriaProyectos() {
               type="button"
               onClick={() => openLightbox(idx)}
               variants={cardItem}
-              className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
+              className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
             >
               <img
                 src={proyecto.imagen}
                 alt={proyecto.titulo}
                 className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
+                decoding="async"
                 onError={(e) => { e.currentTarget.style.display = "none" }}
               />
 
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/0 p-4 transition-all duration-300 group-hover:bg-black/70">
-                <span className="translate-y-4 font-sans text-base font-bold text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/0 p-4 transition-transform duration-300 group-hover:bg-black/70">
+                <span className="translate-y-4 font-sans text-base font-bold text-white opacity-0 transition-transform duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   {proyecto.titulo}
                 </span>
-                <span className="mt-1 translate-y-4 font-sans text-xs text-gray-400 opacity-0 transition-all duration-300 delay-75 group-hover:translate-y-0 group-hover:opacity-100">
+                <span className="mt-1 translate-y-4 font-sans text-xs text-gray-400 opacity-0 transition-transform duration-300 delay-75 group-hover:translate-y-0 group-hover:opacity-100">
                   {proyecto.categoria}
                 </span>
               </div>
@@ -164,7 +171,7 @@ export default function GaleriaProyectos() {
             <motion.button
               type="button"
               onClick={(e) => { e.stopPropagation(); prevImage() }}
-              className="absolute left-4 top-1/2 z-10 inline-flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-300 hover:bg-white/20 hover:scale-110"
+              className="absolute left-4 top-1/2 z-10 inline-flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white transition-transform duration-300 hover:bg-white/20 hover:scale-110"
               aria-label="Anterior"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -202,7 +209,7 @@ export default function GaleriaProyectos() {
             <motion.button
               type="button"
               onClick={(e) => { e.stopPropagation(); nextImage() }}
-              className="absolute right-4 top-1/2 z-10 inline-flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-300 hover:bg-white/20 hover:scale-110"
+              className="absolute right-4 top-1/2 z-10 inline-flex size-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white transition-transform duration-300 hover:bg-white/20 hover:scale-110"
               aria-label="Siguiente"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

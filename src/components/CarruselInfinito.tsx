@@ -35,6 +35,7 @@ export default function CarruselInfinito() {
                 alt={`Trabajo ${(i % IMAGES.length) + 1}`}
                 className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                 loading="lazy"
+                decoding="async"
                 onError={(e) => {
                   const t = e.currentTarget
                   t.style.display = "none"

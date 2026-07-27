@@ -83,19 +83,19 @@ export default function CursoLanding() {
             custom={3}
             className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap"
           >
-            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
+            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
               <Calendar className="size-5 shrink-0 text-[#DC2626]" />
               <span className="font-sans text-sm text-gray-300">
                 <span className="font-semibold text-white">Inicio:</span> 15 de febrero 2025
               </span>
             </div>
-            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
+            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
               <Clock className="size-5 shrink-0 text-[#DC2626]" />
               <span className="font-sans text-sm text-gray-300">
                 <span className="font-semibold text-white">Duración:</span> 25 Horas
               </span>
             </div>
-            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
+            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
               <MapPin className="size-5 shrink-0 text-[#DC2626]" />
               <span className="font-sans text-sm text-gray-300">
                 <span className="font-semibold text-white">Ubicación:</span> Quito – Ecuador
@@ -133,7 +133,7 @@ export default function CursoLanding() {
           >
             <motion.div
               variants={cardItem}
-              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10 md:p-8"
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10 md:p-8"
             >
               <span className="rounded-full bg-[#DC2626]/10 px-3 py-1 font-sans text-xs font-semibold text-[#DC2626]">
                 Opción 1
@@ -151,7 +151,7 @@ export default function CursoLanding() {
             </motion.div>
             <motion.div
               variants={cardItem}
-              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10 md:p-8"
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10 md:p-8"
             >
               <span className="rounded-full bg-[#DC2626]/10 px-3 py-1 font-sans text-xs font-semibold text-[#DC2626]">
                 Opción 2
@@ -213,7 +213,7 @@ export default function CursoLanding() {
             >
               <motion.div
                 variants={cardItem}
-                className="relative rounded-2xl border-2 border-[#DC2626] bg-zinc-900/50 p-6 shadow-lg shadow-[#DC2626]/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#DC2626]/20 md:p-8"
+                className="relative rounded-2xl border-2 border-[#DC2626] bg-zinc-900/50 p-6 shadow-lg shadow-[#DC2626]/10 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#DC2626]/20 md:p-8"
               >
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#DC2626] px-4 py-1 font-sans text-xs font-bold uppercase tracking-wider text-white">
                   Recomendado
@@ -238,7 +238,7 @@ export default function CursoLanding() {
                     href="https://wa.me/593999099175?text=Hola%2C%20quiero%20reservar%20mi%20cupo%20para%20el%20Curso%20Presencial%20de%20R%C3%B3tulos%203D"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3.5 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
+                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3.5 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
                   >
@@ -250,7 +250,7 @@ export default function CursoLanding() {
 
               <motion.div
                 variants={cardItem}
-                className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10 md:p-8"
+                className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10 md:p-8"
               >
                 <div className="text-center">
                   <p className="font-sans text-sm font-semibold text-gray-400">2 Pagos</p>
@@ -269,7 +269,7 @@ export default function CursoLanding() {
                     href="https://wa.me/593999099175?text=Hola%2C%20quiero%20reservar%20mi%20cupo%20para%20el%20Curso%20Presencial%20de%20R%C3%B3tulos%203D"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3.5 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
+                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3.5 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
                   >
@@ -334,7 +334,7 @@ export default function CursoLanding() {
           >
             <motion.div
               variants={cardItem}
-              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
             >
               <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-[#DC2626]/10">
                 <Briefcase className="size-6 text-[#DC2626]" />
@@ -346,7 +346,7 @@ export default function CursoLanding() {
             </motion.div>
             <motion.div
               variants={cardItem}
-              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
             >
               <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-[#DC2626]/10">
                 <TrendingUp className="size-6 text-[#DC2626]" />
@@ -358,7 +358,7 @@ export default function CursoLanding() {
             </motion.div>
             <motion.div
               variants={cardItem}
-              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
+              className="rounded-2xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
             >
               <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-[#DC2626]/10">
                 <Wrench className="size-6 text-[#DC2626]" />
@@ -392,7 +392,7 @@ export default function CursoLanding() {
               href="https://wa.me/593999099175?text=Hola%2C%20quiero%20reservar%20mi%20cupo%20para%20el%20Curso%20Presencial%20de%20R%C3%B3tulos%203D"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#DC2626]/40"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >

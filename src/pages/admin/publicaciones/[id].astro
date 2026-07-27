@@ -1,0 +1,14 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import PublicationForm from '../../../components/admin/PublicationForm.tsx';
+---
+
+<AdminLayout>
+  <div class="max-w-2xl">
+    <div class="mb-8">
+      <a href="/admin/publicaciones" class="text-sm text-zinc-500 hover:text-white transition-colors">&larr; Volver a publicaciones</a>
+      <h1 class="text-2xl font-bold text-white mt-2">Editar publicación</h1>
+    </div>
+    <PublicationForm isEditing={true} publicationId={Astro.params.id!} client:load />
+  </div>
+</AdminLayout>

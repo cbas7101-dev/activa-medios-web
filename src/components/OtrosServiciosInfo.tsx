@@ -110,7 +110,7 @@ export default function OtrosServiciosInfo() {
                   </p>
                   <a
                     href="/cotizacion-3d"
-                    className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#DC2626]/40"
+                    className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-6 py-3 font-sans text-sm font-bold text-white shadow-lg shadow-[#DC2626]/30 transition-transform duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#DC2626]/40"
                   >
                     Cotiza ahora
                     <ArrowRight className="size-4" />

@@ -1,0 +1,8 @@
+---
+import AdminLayout from '../../../layouts/AdminLayout.astro';
+import InsumoDetail from '../../../components/admin/InsumoDetail.tsx';
+---
+
+<AdminLayout>
+  <InsumoDetail insumoId={Astro.params.id!} client:load />
+</AdminLayout>

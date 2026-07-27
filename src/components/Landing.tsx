@@ -70,7 +70,7 @@ export default function Page() {
                                 src={SLIDER_IMAGES[currentSlide]}
                                 alt="Proyecto de rotulación 3D de Activa Medios"
                                 className="size-full object-cover"
-                                loading="lazy"
+                                decoding="async"
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
                             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
@@ -80,7 +80,7 @@ export default function Page() {
                     <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-28 pb-16 text-center md:px-8">
                         <a
                             href="#cotizar"
-                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-sans text-base font-semibold text-primary-foreground shadow-xl shadow-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/40"
+                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-sans text-base font-semibold text-primary-foreground shadow-xl shadow-primary/30 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/40"
                         >
                             Cotiza tu rótulo 3D
                             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -118,7 +118,7 @@ export default function Page() {
                             <motion.a
                                 href="/rotulacion-3d"
                                 variants={cardItem}
-                                className="group col-span-1 row-span-2 flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20 lg:col-span-2"
+                                className="group col-span-1 row-span-2 flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20 lg:col-span-2"
                             >
                                 <div className="relative w-full overflow-hidden">
                                     <img
@@ -126,19 +126,13 @@ export default function Page() {
                                         alt="Letras corpóreas 3D iluminadas en acrílico y neón LED"
                                         className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
                                         loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                                 <div className="flex flex-1 flex-col justify-end p-6 md:p-9">
-                                    <span className="inline-flex items-center gap-2 self-start rounded-full bg-primary px-3 py-1 font-sans text-xs font-semibold uppercase tracking-wider text-primary-foreground">
-                                        Servicio estrella
-                                    </span>
                                     <h3 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
                                         Rotulación 3D
                                     </h3>
-                                    <p className="mt-3 max-w-md font-sans text-base leading-relaxed text-muted-foreground">
-                                        Letras corpóreas iluminadas y no iluminadas. Diseño, fabricación e instalación
-                                        profesional que hace destacar tu marca.
-                                    </p>
                                     <span className="mt-6 inline-flex items-center gap-2 self-start rounded-full border border-foreground/30 bg-background/40 px-5 py-2.5 font-sans text-sm font-semibold text-foreground backdrop-blur transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:text-primary-foreground">
                                         Cotizar rótulo 3D
                                         <ArrowUpRight className="size-4" />
@@ -149,51 +143,47 @@ export default function Page() {
                             <motion.a
                                 href="/insumos"
                                 variants={cardItem}
-                                className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20"
+                                className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20"
                             >
                                 <div className="relative w-full overflow-hidden">
                                     <img
                                         src="/insumos/leds.jpeg"
                                         alt="Insumos y materiales para rotulación"
-                                        className="w-full aspect-video object-cover transition-all duration-700 group-hover:scale-105"
+                                        className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
                                         loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                                 <div className="flex flex-1 flex-col justify-end p-6">
                                     <Package className="size-6 text-accent" />
                                     <h3 className="mt-3 font-heading text-xl font-bold text-foreground">Insumos</h3>
-                                    <p className="mt-1 font-sans text-sm text-muted-foreground">
-                                        Acrílico, PVC, aluminio, LED y más para tu taller.
-                                    </p>
                                 </div>
                             </motion.a>
 
                             <motion.a
                                 href="/cursos"
                                 variants={cardItem}
-                                className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20"
+                                className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20"
                             >
                                 <div className="relative w-full overflow-hidden">
                                     <img
                                         src="/fotos/Cursos-foto-interna-ai.png"
                                         alt="Cursos de rotulación y fabricación de letras 3D"
-                                        className="w-full aspect-video object-cover transition-all duration-700 group-hover:scale-105"
+                                        className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
                                         loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                                 <div className="flex flex-1 flex-col justify-end p-6">
                                     <GraduationCap className="size-6 text-accent" />
                                     <h3 className="mt-3 font-heading text-xl font-bold text-foreground">Cursos</h3>
-                                    <p className="mt-1 font-sans text-sm text-muted-foreground">
-                                        Aprende a fabricar letras corpóreas como un profesional.
-                                    </p>
                                 </div>
                             </motion.a>
                         </motion.div>
 
                         <motion.a
                             href="/otros-servicios"
-                            className="group mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-zinc-900/50 px-6 py-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-lg hover:shadow-red-900/10"
+                            className="group mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-zinc-900/50 px-6 py-4 backdrop-blur-md transition-transform duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-lg hover:shadow-red-900/10"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -237,7 +227,7 @@ export default function Page() {
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
                             <iframe
-                                src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1btNdhkUES%2F&show_text=false&width=auto"
+                                src="https://www.youtube.com/embed/Jkt9H0RggaE"
                                 className="w-full aspect-video rounded-2xl border-none shadow-2xl"
                                 scrolling="no"
                                 frameBorder="0"
@@ -268,7 +258,7 @@ export default function Page() {
                     </p>
                     <a
                         href="/cotizacion-3d"
-                        className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-sans text-base font-semibold text-primary-foreground shadow-xl shadow-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/40"
+                        className="group mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-sans text-base font-semibold text-primary-foreground shadow-xl shadow-primary/30 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/40"
                     >
                         Cotiza tu Rótulo 3D
                         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

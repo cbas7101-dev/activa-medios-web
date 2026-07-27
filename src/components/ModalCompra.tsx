@@ -17,13 +17,10 @@ type ModalCompraProps = {
 }
 
 const COLOR_MAP: Record<string, string> = {
-  Rojo: "#DC2626",
   Blanco: "#F5F5F5",
   Amarillo: "#EAB308",
   Plateado: "#A1A1AA",
-  Verde: "#22C55E",
   Negro: "#1A1A1A",
-  Azul: "#3B82F6",
   Cálido: "#F59E0B",
   Plata: "#A1A1AA",
 }
