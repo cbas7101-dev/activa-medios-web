@@ -90,57 +90,71 @@ export default function RotulacionInfo() {
       <div className="mx-auto max-w-7xl px-4 md:px-8">
 
         {/* NUEVA GALERÍA 3D */}
-        <motion.section
+        <section
           id="galeria-3d"
           className="py-16 md:py-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
         >
           <div className="mb-12 max-w-2xl">
             <span className="font-sans text-sm font-semibold uppercase tracking-wider text-[#DC2626]">
               Galería 3D
             </span>
             <h2 className="mt-3 font-heading text-3xl font-extrabold tracking-tight text-balance text-white md:text-4xl">
-              Explora nuestros acabados
+              Nuestros rótulos
             </h2>
           </div>
 
-          <div className="mb-10 flex flex-wrap justify-center gap-2">
-            {CATEGORIAS_GALERIA.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveTab(cat)}
-                className={`rounded-full px-5 py-2 font-sans text-sm font-semibold transition-all duration-300 ${
-                  activeTab === cat
-                    ? "bg-[#DC2626] text-white shadow-lg shadow-[#DC2626]/30"
-                    : "bg-zinc-800/50 text-gray-400 backdrop-blur-md hover:bg-zinc-700 hover:text-gray-200"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="group relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md">
+              <img
+                src="/fotos/Tpazio-2.jpg"
+                alt="Rótulo 3D Tpazio"
+                className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <motion.div
-                key={i}
-                className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:border-zinc-700 hover:shadow-xl hover:shadow-red-900/10"
-              >
-                <img
-                  src={`/fotos/${activeTab.toLowerCase()}-${i}.jpg`}
-                  alt={`${activeTab} ${i}`}
-                  className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </motion.div>
-            ))}
+            <div className="group relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md">
+              <img
+                src="/fotos/Seguro-Sucre-3.jpg"
+                alt="Rótulo 3D Seguro Sucre"
+                className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className="group relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md">
+              <img
+                src="/fotos/Senae-3.jpg"
+                alt="Rótulo 3D Senae"
+                className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className="group relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md">
+              <img
+                src="/fotos/Remax.jpg"
+                alt="Rótulo 3D Remax"
+                className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className="group relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md">
+              <img
+                src="/fotos/FMA-2.jpg"
+                alt="Rótulo 3D FMA"
+                className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* CTA - ¿Listo para tu rótulo 3D? */}
         <motion.section
