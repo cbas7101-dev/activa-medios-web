@@ -11,15 +11,13 @@ type Proyecto = {
   imagen: string
 }
 
-const CATEGORIAS = ["Todos", "Metálicos", "Aluminio", "Acrílicos", "Acero inoxidable", "Bronce", "Cajas de luz", "Vallas", "Gigantografías", "Adhesivos", "Menuderos", "Backings", "Viceras", "Totems", "Decoración"]
+const CATEGORIAS = ["Todos", "Metálicos", "Acrílicos", "Acero inoxidable", "Bronce", "Cajas de luz", "Vallas", "Gigantografías", "Adhesivos", "Menuderos", "Backings", "Viceras", "Decoración"]
 
 const PROYECTOS: Proyecto[] = [
   { id: 1, titulo: "Rótulo Metálico Barranco", categoria: "Metálicos", imagen: "/Galeria/1%20Metal/Barranco.jpg" },
   { id: 2, titulo: "Rótulo Metálico Bucodent", categoria: "Metálicos", imagen: "/Galeria/1%20Metal/Bucodent.jpg" },
   { id: 3, titulo: "Rótulo Metálico Bagueteria", categoria: "Metálicos", imagen: "/Galeria/1%20Metal/Bagueteria.jpg" },
   { id: 4, titulo: "Rótulo Metálico Coimpexa", categoria: "Metálicos", imagen: "/Galeria/1%20Metal/Coimpexa.jpg" },
-  { id: 5, titulo: "Perfil de Aluminio", categoria: "Aluminio", imagen: "/insumos/perfil-de-aluminio.jpeg" },
-  { id: 6, titulo: "Rótulo Aluminio Almenar", categoria: "Aluminio", imagen: "/Galeria/Almenar-2.jpg" },
   { id: 7, titulo: "Rótulo Acrílico Chicberry", categoria: "Acrílicos", imagen: "/Galeria/3%20Acrílicos/Chicberry.jpg" },
   { id: 8, titulo: "Rótulo Acrílico Elite", categoria: "Acrílicos", imagen: "/Galeria/3%20Acrílicos/Elite.jpg" },
   { id: 9, titulo: "Rótulo Acrílico Misska", categoria: "Acrílicos", imagen: "/Galeria/3%20Acrílicos/Misska.jpg" },
@@ -43,8 +41,6 @@ const PROYECTOS: Proyecto[] = [
   { id: 27, titulo: "Backing Samy Stand", categoria: "Backings", imagen: "/Galeria/11%20Backings/Samy-Stand.jpg" },
   { id: 28, titulo: "Vicera 1", categoria: "Viceras", imagen: "/Galeria/12%20Viceras/IMG_20251016_153440.jpg" },
   { id: 29, titulo: "Vicera 2", categoria: "Viceras", imagen: "/Galeria/12%20Viceras/IMG_20251016_153534.jpg" },
-  { id: 30, titulo: "Totem Seyer", categoria: "Totems", imagen: "/Galeria/5%20Caja%20de%20luz/Seyer-Totem.jpg" },
-  { id: 31, titulo: "Totem Seyer Acrílico", categoria: "Totems", imagen: "/Galeria/3%20Acrílicos/Seyer.JPG" },
   { id: 32, titulo: "Decoración 1", categoria: "Decoración", imagen: "/Galeria/13%20Decoración/20180424_201149.jpg" },
   { id: 33, titulo: "Decoración 2", categoria: "Decoración", imagen: "/Galeria/13%20Decoración/20180424_201159.jpg" },
   { id: 34, titulo: "Decoración 3", categoria: "Decoración", imagen: "/Galeria/13%20Decoración/20180424_201207.jpg" },
