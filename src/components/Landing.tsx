@@ -72,15 +72,15 @@ export default function Page() {
                                 className="size-full object-cover"
                                 decoding="async"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/35 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
                         </motion.div>
                     </AnimatePresence>
 
                     <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-28 pb-16 text-center md:px-8">
                         <a
-                            href="#cotizar"
-                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-sans text-base font-semibold text-primary-foreground shadow-xl shadow-primary/30 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/40"
+                            href="/cotizacion-3d"
+                            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#DC2626] px-8 py-4 font-sans text-base font-bold text-white shadow-xl shadow-[#DC2626]/40 ring-2 ring-white/20 transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#DC2626]/50"
                         >
                             Cotiza tu rótulo 3D
                             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -104,7 +104,7 @@ export default function Page() {
                                 Nuestros servicios
                             </span>
                             <h2 className="mt-3 font-heading text-4xl font-extrabold tracking-tight text-balance text-foreground md:text-5xl">
-                                Todo para tu comunicación visual
+                                Rótulos 3D
                             </h2>
                         </motion.div>
 

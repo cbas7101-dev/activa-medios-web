@@ -2,9 +2,8 @@
 
 import { motion } from "framer-motion"
 import {
-  Calendar, Clock, MapPin, Check,
-  GraduationCap, Briefcase, TrendingUp, Wrench, MessageCircle,
-  Sparkles
+  Clock, Check,
+  GraduationCap, Briefcase, TrendingUp, Wrench, MessageCircle
 } from "lucide-react"
 
 const INCLUYE = [
@@ -42,75 +41,62 @@ export default function CursoLanding() {
       <div className="absolute top-1/4 left-1/3 size-96 rounded-full bg-red-600/5 blur-[120px]" />
       <div className="absolute bottom-1/3 right-1/4 size-80 rounded-full bg-red-600/5 blur-[100px]" />
 
-      <motion.section
-        className="relative -mt-24 w-full bg-cover bg-top bg-no-repeat"
-        style={{ backgroundImage: "url('/fotos/Cursos-foto-interna-ai.png')" }}
-        initial="hidden"
-        animate="visible"
-        variants={staggerContainer}
+      <section
+        id="hero"
+        className="relative -mt-24 flex h-[70vh] min-h-[400px] w-full items-center justify-center overflow-hidden bg-black md:h-[85vh]"
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent bg-black/40" />
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-32 text-center md:px-8">
-          <motion.div
-            variants={fadeUp}
-            custom={0}
-            className="mx-auto inline-flex items-center gap-2 rounded-full bg-[#DC2626]/10 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-[#DC2626]"
-          >
-            <Sparkles className="size-3.5" />
-            Curso Presencial
-          </motion.div>
-          <motion.h1
-            variants={fadeUp}
-            custom={1}
-            className="mx-auto mt-6 max-w-4xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-white md:text-5xl md:leading-tight"
-          >
-            CURSO PRESENCIAL DE{" "}
-            <span className="text-[#DC2626]">RÓTULOS 3D</span> Y{" "}
-            <span className="text-[#DC2626]">NEÓN FLEX</span>
-          </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            custom={2}
-            className="mx-auto mt-5 max-w-2xl font-sans text-base leading-relaxed text-gray-400 md:text-lg"
-          >
-            Aprende paso a paso desde 0, en este curso 100% práctico y
-            personalizado. Incluye todos los materiales para las prácticas
-            profesionales.
-          </motion.p>
+        <img
+          src="/fotos/rotulos3d.png"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+        />
 
-          <motion.div
-            variants={fadeUp}
-            custom={3}
-            className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap"
-          >
-            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
-              <Calendar className="size-5 shrink-0 text-[#DC2626]" />
-              <span className="font-sans text-sm text-gray-300">
-                <span className="font-semibold text-white">Inicio:</span> 15 de febrero 2025
-              </span>
-            </div>
-            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
-              <Clock className="size-5 shrink-0 text-[#DC2626]" />
-              <span className="font-sans text-sm text-gray-300">
-                <span className="font-semibold text-white">Duración:</span> 25 Horas
-              </span>
-            </div>
-            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-900/50 px-5 py-3 backdrop-blur-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-900/5">
-              <MapPin className="size-5 shrink-0 text-[#DC2626]" />
-              <span className="font-sans text-sm text-gray-300">
-                <span className="font-semibold text-white">Ubicación:</span> Quito – Ecuador
-              </span>
-            </div>
-          </motion.div>
-          <motion.p
-            variants={fadeUp}
-            custom={4}
-            className="mt-3 font-sans text-xs text-gray-500"
-          >
-            De Las Toronjas S/N y De Los Melones, Sector El Inca
-          </motion.p>
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
+
+        <div className="relative z-20 mt-20 px-4 text-center md:mt-32">
+          <p className="mb-2 font-heading text-lg tracking-widest text-orange-500 md:text-2xl">ACTIVA MEDIOS PRESENTA</p>
+          <h1 className="font-heading text-4xl font-bold leading-snug tracking-wider text-orange-500 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_0_rgb(194_65_0),_4px_4px_0_rgb(154_52_18),_6px_6px_12px_rgba(0,0,0,0.5)] sm:text-5xl md:text-8xl lg:text-9xl">
+            CURSO DE<br /><span className="mt-2 block md:mt-3">RÓTULOS 3D</span>
+          </h1>
+          <p className="mt-4 text-base font-medium text-white/80 md:text-xl">Presencial – Quito, Ecuador</p>
         </div>
-      </motion.section>
+
+        <div className="absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-black to-transparent" />
+      </section>
+
+      <section className="border-t border-white/10 bg-black py-8 md:py-12">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3 md:gap-8">
+          <div className="flex items-start gap-4">
+            <svg className="mt-1 h-8 w-8 shrink-0 text-orange-500 md:h-10 md:w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <div>
+              <p className="font-heading text-sm tracking-widest text-orange-500">INICIO</p>
+              <p className="text-base font-semibold text-white md:text-lg">15 de febrero de 2025</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <svg className="mt-1 h-8 w-8 shrink-0 text-orange-500 md:h-10 md:w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <p className="font-heading text-sm tracking-widest text-orange-500">DURACIÓN</p>
+              <p className="text-base font-semibold text-white md:text-lg">25 HORAS</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <svg className="mt-1 h-8 w-8 shrink-0 text-orange-500 md:h-10 md:w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <div>
+              <p className="font-heading text-sm tracking-widest text-orange-500">UBICACIÓN</p>
+              <p className="text-base font-semibold text-white md:text-lg">De Las Toronjas S/N y De Los Melones, esquina. Sector: El Inca. Quito – Ecuador.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="mx-auto max-w-7xl px-4 md:px-8">
 
@@ -399,6 +385,26 @@ export default function CursoLanding() {
               <MessageCircle className="size-5" />
               ¡RESERVA UN CUPO!
             </motion.a>
+          </div>
+        </motion.section>
+
+        {/* ORGANIZADO POR */}
+        <motion.section
+          className="py-12 text-center md:py-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="font-sans text-sm tracking-widest text-white/50">ORGANIZADO POR:</p>
+          <div className="mx-auto mt-6 inline-block rounded-2xl bg-white px-8 py-6 shadow-xl">
+            <img
+              src="/logotpo-activa.png"
+              alt="Activa Medios"
+              className="h-16 w-auto md:h-20"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </motion.section>
 

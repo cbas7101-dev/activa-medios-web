@@ -12,40 +12,40 @@ type Servicio = {
 
 const SERVICIOS: Servicio[] = [
   {
-    titulo: "Publicitarios",
-    desc: "Activa tu punto de venta con material P.O.P. y haz que tu empresa se destaque, imprime tu marca en: roll ups, pop ups, exhibidores, porta menús, agendas pasta dura, vidrios publicitarios, carpas, inflables, mesas degustadoras y productos personalizados. ¡Somos el complemento ideal para tu negocio!",
-    icon: Megaphone,
-    imagen: "/fotos/Publicitarios-foto-interna-ai-e1679525816548.png",
+    titulo: "Desarrollo Web Inteligente",
+    desc: "Planificamos, diseñamos y desarrollamos su página web buscando el mayor impacto estratégico para su negocio o empresa. Integramos Inteligencia Artificial y automatización para optimizar la atención al cliente y generar nuevas oportunidades de venta 24/7.",
+    icon: Monitor,
+    imagen: "/web.jpeg",
   },
   {
-    titulo: "Diseño Web",
-    desc: "Planificamos, diseñamos y desarrollamos su página web buscando el mayor impacto estratégico a la hora de hacer clic con su negocio o empresa. ¡Tus productos y servicios véndelos o promociónalos así de fácil!",
-    icon: Monitor,
-    imagen: "/fotos/Diseno-web-foto-interna-2-ai-e1680123248104.png",
+    titulo: "Publicitarios",
+    desc: "Activa tu punto de venta con material P.O.P. y haz que tu empresa se destaque, imprime tu marca en: roll ups, pop ups, exhibidores, porta menús, agendas pasta dura, carpas, inflables, mesas degustadoras y productos personalizados. ¡Somos el complemento ideal para tu negocio!",
+    icon: Megaphone,
+    imagen: "/fotos/Publicitarios-foto-interna-ai-e1679525816548.png",
   },
   {
     titulo: "Señalética",
     desc: "Soluciones altamente personalizadas: materiales durables y de calidad, aplicaciones foto luminiscentes y reflectivas estandarizadas para brindarle mayor seguridad.",
     icon: Signpost,
-    imagen: "/fotos/Senaletica-foto-interna-ai.png",
+    imagen: "/señaletica.png",
   },
   {
     titulo: "Publicidad Móvil",
-    desc: "Utilizamos espacios publicitarios en autobuses de transporte público, camiones, furgones, taxis a nivel nacional para mostrar anuncios gráficos o de video en el exterior o interior. Le ofrecemos opciones de segmentación para aumentar la relevancia y la efectividad de las campañas publicitarias.",
+    desc: "Convertimos buses, camiones, furgones y taxis en publicidad en movimiento. Con Publi Móvil, tu marca recorre la ciudad, llega a nuevos públicos y genera un impacto constante donde quiera que vaya.",
     icon: Bus,
-    imagen: "/fotos/Publicidad-movil-foto-interna-ai.png",
+    imagen: "/bus.jpeg",
   },
   {
     titulo: "Gigantografías",
-    desc: "Imprimimos en gran formato para publicidad y promoción en paredes, vallas publicitarias y edificios. Pueden ser personalizadas con gráficos e imágenes y adaptarse a diferentes ubicaciones y audiencias específicas. Impresión para exterior e interior en alta definición: lonas banner, traslúcida, vinil adhesivo mate o brillante, microperforados, laminados, reflectivo, roll ups, pop ups armables. ¡Incluimos el servicio de instalación!",
+    desc: "Imprimimos en alta definición para interiores y exteriores: impresión en gran formato para vallas publicitarias, fachadas, lonas banner y traslúcidas, vinil adhesivo mate o brillante, microperforados, laminados y reflectivos. También producimos roll ups, pop ups y estructuras publicitarias armables. Del diseño a la instalación, nos encargamos de todo.",
     icon: Image,
     imagen: "/fotos/Gigantografias-foto-interna-ai (1).png",
   },
   {
     titulo: "Imprenta",
-    desc: "Somos la solución a sus proyectos gráficos e impresos, deseamos que nuestros servicios le ayuden a concretar sus objetivos. Imprime: hojas membretadas, carpetas corporativas, revistas, folletos, libros, tarjetas de presentación, flyers (hojas volantes), dípticos, trípticos, plegables, etiquetas, textos y gráficos en papel y otros materiales, personalizándolos según sus necesidades. Incluye acabados especiales como barniz UV, troquelados, estampados en relieve y láminas en pan de oro o plata para dar calidad y sofisticación.",
+    desc: "Damos vida a sus ideas con soluciones gráficas de alta calidad. Imprimimos tarjetas de presentación, hojas membretadas, carpetas corporativas, revistas, catálogos, libros, folletos, flyers, dípticos, trípticos, plegables y etiquetas, con una amplia variedad de acabados. Realzamos cada pieza con barniz selectivo, laminado mate o brillante, troquelados y acabados especiales en pan de oro y plata, logrando una presentación profesional y de excelente calidad. Del diseño a la impresión, cuidamos cada detalle de su proyecto.",
     icon: Printer,
-    imagen: "/fotos/Imprenta-foto-interna-ai.png",
+    imagen: "/imprenta.jpeg",
   },
 ]
 
@@ -71,7 +71,7 @@ export default function OtrosServiciosInfo() {
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-sans text-base leading-relaxed text-gray-400">
             Soluciones integrales de comunicación visual para tu marca.
-            De la imprenta al mundo digital, un solo proveedor.
+            Diseño, impresión, instalación y soporte digital con un solo proveedor especializado.
           </p>
         </motion.div>
 

@@ -71,8 +71,8 @@ export default function RotulacionInfo() {
               custom={2}
               className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-gray-400 md:text-lg"
             >
-              Fabricamos e instalamos letras corpóreas, rótulos 3D iluminados y neón flex LED.
-              Transformamos tus ideas en piezas de comunicación visual que destacan y perduran.
+              Somos expertos en Rotulación 3D.
+              Fabricamos e instalamos letras corpóreas, rótulos 3D iluminados elaborados en diferentes materiales y con la más alta tecnología.
             </motion.p>
 
             <motion.div variants={fadeUp} custom={3} className="mt-8">
