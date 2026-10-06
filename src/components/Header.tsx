@@ -5,11 +5,11 @@ import { Menu, X } from "lucide-react"
 
 const NAV_LINKS = [
     { label: "Inicio", href: "/" },
-    { label: "Rotulación 3D", href: "/rotulacion-3d" },
-    { label: "Insumos", href: "/insumos" },
-    { label: "Cursos", href: "/cursos" },
-    { label: "Otros servicios", href: "/otros-servicios" },
+    { label: "Cotiza tu Rótulo 3D", href: "/cotizacion-3d" },
     { label: "Galería", href: "/galeria" },
+    { label: "Insumos", href: "/insumos" },
+    { label: "Cursos", href: "https://activacursos.com", external: true },
+    { label: "Otros servicios", href: "/otros-servicios" },
     { label: "Nosotros", href: "/nosotros" },
 ]
 
@@ -41,6 +41,9 @@ export default function Header() {
                         <a
                             key={link.label}
                             href={link.href}
+                            {...((link as { external?: boolean }).external
+                                ? { target: "_blank", rel: "noopener noreferrer" }
+                                : {})}
                             className="relative font-sans text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                         >
                             {link.label}
@@ -122,6 +125,9 @@ export default function Header() {
                             <a
                                 key={link.label}
                                 href={link.href}
+                                {...((link as { external?: boolean }).external
+                                    ? { target: "_blank", rel: "noopener noreferrer" }
+                                    : {})}
                                 onClick={() => setMenuOpen(false)}
                                 className="rounded-md px-3 py-3 font-sans text-base font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
                             >

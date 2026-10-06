@@ -1,8 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import CursoLanding from '../components/CursoLanding.tsx';
 ---
-
-<Layout>
-  <CursoLanding client:idle />
-</Layout>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0; url=https://activacursos.com" />
+    <link rel="canonical" href="https://activacursos.com" />
+    <title>Redirigiendo a Activa Cursos…</title>
+    <script>window.location.replace("https://activacursos.com");</script>
+  </head>
+  <body>
+    <p>Redirigiendo a <a href="https://activacursos.com">activacursos.com</a>…</p>
+  </body>
+</html>

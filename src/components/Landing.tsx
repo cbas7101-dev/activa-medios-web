@@ -161,7 +161,9 @@ export default function Page() {
                             </motion.a>
 
                             <motion.a
-                                href="/cursos"
+                                href="https://activacursos.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 variants={cardItem}
                                 className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 backdrop-blur-md transition-transform duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-900/20"
                             >

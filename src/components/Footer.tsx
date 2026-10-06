@@ -25,7 +25,7 @@ export default function Footer() {
                     <ul className="mt-4 space-y-3 font-sans text-sm text-muted-foreground">
                         <li><a href="/rotulacion-3d" className="transition-colors hover:text-accent">Rotulación 3D</a></li>
                         <li><a href="/insumos" className="transition-colors hover:text-accent">Insumos</a></li>
-                        <li><a href="/cursos" className="transition-colors hover:text-accent">Cursos</a></li>
+                        <li><a href="https://activacursos.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">Cursos</a></li>
                         <li><a href="/galeria" className="transition-colors hover:text-accent">Galería</a></li>
                     </ul>
                 </div>
